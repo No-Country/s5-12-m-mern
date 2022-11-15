@@ -1,3 +1,6 @@
+import mongoose from "mongoose"
+import { UserModel } from "../models/User.js"
+
 const demousr = [
     {
         id: "1234",
@@ -19,12 +22,23 @@ const demousr = [
     }
 ]
 
-exports.userAll = (req, res) => {
-    res.json(demousr)
+export const createUser = async (req, res) => {
+    const { username, fullName, email, password } = req.body
+
+    const newUser = new UserModel({
+        username,
+        fullName,
+        email,
+        password: await UserModel.encryptPassword(password)
+    })
+
+    await newUser.save()
+
+    res.status(200).send({})
 }
 
-exports.userSingle = (req, res) => {
-    const {id} = req.params
-    console.log(id)
-    res.json(demousr[0])
+export const getUserbyId = async (req, res) => {
+    const user = await UserModel.findById(req.params.id)
+
+    res.status(200).send(user)
 }
