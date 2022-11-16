@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
 import morgan from 'morgan'
-//import './src/config/db.js'
+// import './src/config/db.js'
 
 //Import de rutas
 import {router as petRouter} from "./src/routes/pets.js"
