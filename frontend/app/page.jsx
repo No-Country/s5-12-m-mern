@@ -2,12 +2,14 @@ import Image from "next/image";
 import { Footer } from "./components/footer";
 import Header from "./components/navigation/Header";
 import styles from "./page.module.css";
+import Testimonios from "./components/testimonios/Testimonios";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <div className={styles.container}>
+      <Testimonios/>
+      {/* <div className={styles.container}>
         <main className={styles.main}>
           <h1 className="text-3xl text-yellow-200 hover:text-4xl hover:text-yellow-400 transition-all">
             Cuidados y paseos de mascotas
@@ -32,8 +34,8 @@ export default function Home() {
             </a>
           </div>
         </main>
-        <Footer />
-      </div>
+      </div> */}      
+      <Footer />
     </>
   );
 }
