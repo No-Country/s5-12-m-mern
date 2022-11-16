@@ -27,16 +27,11 @@ export const SliderHome = () => {
     }
     return (
     <>
-    <div id="indicators-carousel" className="relative" data-carousel="static">
+    <div id="indicators-carousel" className="relative mt-3" data-carousel="static">
         <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
             <div className="duration-700 ease-in-out">
                 <Image src={"/slider/"+imgToShow} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="demo slider de Felipe" width={100} height={100}/>
             </div>
-        </div>
-        <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-            <button type="button" className="w-3 h-3 rounded-full" aria-current="true"></button>
-            <button type="button" className="w-3 h-3 rounded-full" aria-current="false"></button>
-            <button type="button" className="w-3 h-3 rounded-full" aria-current="false"></button>
         </div>
         <button onClick={prev} className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
             <span className="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
