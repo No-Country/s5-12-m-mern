@@ -1,8 +1,7 @@
 //Para hacer andar el node en modo --watch necesitan tener la ultima versión instalada: npm install n -g
 
 //inicialización de módulos
-import * as dotenv from 'dotenv'
-dotenv.config()
+import dotenv from 'dotenv/config'
 import express from 'express'
 import morgan from 'morgan'
 // import './src/config/db.js'
