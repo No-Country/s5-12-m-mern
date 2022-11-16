@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { useState } from "react"
 export const SliderHome = () => {
-    const images = ["carousel-1.svg", "carousel-2.svg", "carousel-3.svg"]
+    const images = ["slider1.jpg", "slider2.jpg", "slider3.jpg"]
     const [indexSlider, setIndexSlider] = useState(0)
     const [imgToShow, setImgToShow] = useState(images[0])
 
@@ -14,8 +14,8 @@ export const SliderHome = () => {
             setIndexSlider(images.length - 1)
             setImgToShow(images[images.length - 1])
         }
-        
     }
+
     const next = () => {
         if (indexSlider === images.length - 1) {
             setIndexSlider(0) 
@@ -27,10 +27,10 @@ export const SliderHome = () => {
     }
     return (
     <>
-    <div id="indicators-carousel" className="relative mt-3" data-carousel="static">
-        <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+    <div className="relative mt-3">
+        <div className="relative h-56 overflow-hidden rounded-lg md:h-[500px]">
             <div className="duration-700 ease-in-out">
-                <Image src={"/slider/"+imgToShow} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="demo slider de Felipe" width={100} height={100}/>
+                <Image src={"/slider/"+imgToShow} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="demo slider de Felipe" width={1000} height={600}/>
             </div>
         </div>
         <button onClick={prev} className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
