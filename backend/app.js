@@ -8,6 +8,7 @@ import cors from "cors";
 // import './src/config/db.js'
 
 //Import de rutas
+import { hasToken } from './src/middlewares/authToken.js';
 import {router as petRouter} from "./src/routes/pets.js"
 import {router as userRouter} from "./src/routes/user.js"
 
@@ -23,7 +24,7 @@ app.use(express.json()) //nuevo body parser incluido en ultimas versiones de exp
 app.use(express.urlencoded({ extended: false })) //necesario para metodos POST, PUT, PATCH y DELETE
 
 //rutas
-app.use('/api/pets', petRouter)
+app.use('/api/pets', hasToken, petRouter)
 app.use('/api/user', userRouter) 
 
 app.get('*', (req, res) => res.status(404).json({ error: "Not found" })) //msg de error 404 para rutas no definidas
