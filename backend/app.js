@@ -4,6 +4,7 @@
 import dotenv from 'dotenv/config'
 import express from 'express'
 import morgan from 'morgan'
+import cors from "cors";
 // import './src/config/db.js'
 
 //Import de rutas
@@ -13,6 +14,10 @@ import {router as userRouter} from "./src/routes/user.js"
 const app = express()
 const port = process.env.PORT || 3000
 
+app.use(cors({
+    'origin': ['*'], //cambiar * por ip donde se alojará la app front
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  }));
 app.use(morgan('dev'))
 app.use(express.json()) //nuevo body parser incluido en ultimas versiones de express
 app.use(express.urlencoded({ extended: false })) //necesario para metodos POST, PUT, PATCH y DELETE
