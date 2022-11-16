@@ -1,6 +1,7 @@
 {
   "name": "mascotitas",
   "version": "1.0.0",
+  "type": "module",
   "description": "api de web sobre mascotas",
   "main": "app.js",
   "scripts": {
