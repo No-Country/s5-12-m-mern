@@ -1,8 +1,8 @@
-const express = require('express')
+import express from 'express'
+import {userAll, userSingle} from './../controllers/user.js'
 const router = express.Router()
-const controller = require('./../controllers/user')
 
-router.get('/', controller.userAll)
-router.get('/:id', controller.userSingle)
+router.get('/', userAll)
+router.get('/:id', userSingle)
 
-module.exports = router
+export {router}

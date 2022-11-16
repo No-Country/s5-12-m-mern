@@ -5,7 +5,12 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 import express from 'express'
 import morgan from 'morgan'
-import './src/config/db.js'
+//import './src/config/db.js'
+
+//Import de rutas
+import {router as petRouter} from "./src/routes/pets.js"
+import {router as userRouter} from "./src/routes/user.js"
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -14,7 +19,8 @@ app.use(express.json()) //nuevo body parser incluido en ultimas versiones de exp
 app.use(express.urlencoded({ extended: false })) //necesario para metodos POST, PUT, PATCH y DELETE
 
 //rutas
-app.use('/api', require('./src/routes/index')) //base donde están todas las rutas
+app.use('/api/pets', petRouter)
+app.use('/api/user', userRouter) 
 
 app.get('*', (req, res) => res.status(404).json({ error: "Not found" })) //msg de error 404 para rutas no definidas
 app.listen(port, () => console.log(`App working on port ${port}!`))

@@ -19,12 +19,14 @@ const demousr = [
     }
 ]
 
-exports.userAll = (req, res) => {
+const userAll = (req, res) => {
     res.json(demousr)
 }
 
-exports.userSingle = (req, res) => {
+const userSingle = (req, res) => {
     const {id} = req.params
     console.log(id)
     res.json(demousr[0])
 }
+
+export {userAll, userSingle}
