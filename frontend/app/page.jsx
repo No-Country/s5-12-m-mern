@@ -1,12 +1,11 @@
 import Image from 'next/image'
 import { Footer } from './components/footer'
-import { SliderHome } from './components/slider'
+import { SliderHome } from './components/slider' //componente slider
 import styles from './page.module.css'
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <SliderHome/>
       <main className={styles.main}>
         <h1 className="text-3xl text-yellow-200 hover:text-4xl hover:text-yellow-400 transition-all">
           Cuidados y paseos de mascotas
