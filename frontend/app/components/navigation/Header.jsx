@@ -32,11 +32,15 @@ const Header = () => {
           onClick={openDrawerHandler}
           className={styles["main-navigation__menu-btn"]}
         >
-          <GiHamburgerMenu size={25}/>
+          <GiHamburgerMenu size={25} />
         </button>
         <Link href="/" className={styles.ctnInfoNav}>
-
-            <Image src="/logowc.png" alt="logo Walk and Care" width="40" height="40" />
+          <Image
+            src="/logowc.png"
+            alt="logo Walk and Care"
+            width="40"
+            height="40"
+          />
 
           <h2>Walk&Care</h2>
         </Link>
