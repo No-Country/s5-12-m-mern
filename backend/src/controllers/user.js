@@ -42,3 +42,5 @@ export const getUserbyId = async (req, res) => {
 
     res.status(200).send(user)
 }
+
+export {userAll, userSingle}
