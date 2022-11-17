@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import Backdrop from "../UI/backdrop/Backdrop";
 import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
@@ -26,12 +28,25 @@ const Header = () => {
         </nav>
       </SideDrawer>
       <div className={styles["header-ctn"]}>
-        <button onClick={openDrawerHandler} className={styles["main-navigation__menu-btn"]}>
-          <GiHamburgerMenu />
+        <button
+          onClick={openDrawerHandler}
+          className={styles["main-navigation__menu-btn"]}
+        >
+          <GiHamburgerMenu size={25} />
         </button>
-        <h2>Walk&Care</h2>
+        <Link href="/" className={styles.ctnInfoNav}>
+          <Image
+            src="/logowc.png"
+            alt="logo Walk and Care"
+            width="40"
+            height="40"
+          />
+
+          <h2>Walk&Care</h2>
+        </Link>
+
         <nav className={styles["main-navigation__header-nav"]}>
-            <NavLinks />
+          <NavLinks />
         </nav>
       </div>
     </>
