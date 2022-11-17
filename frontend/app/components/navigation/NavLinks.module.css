@@ -1,0 +1,38 @@
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 1rem;
+}
+
+.nav-links a {
+  border: 1px solid transparent;
+  color: #000;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+      flex-direction: row;
+    }
+  
+    .nav-links a {
+      text-decoration: none;
+    }
+  
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a.active {
+      border-bottom: 3px solid white;
+    }
+  }
