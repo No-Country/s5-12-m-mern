@@ -17,12 +17,14 @@ const demopet = [
     }
 ]
 
-exports.petAll = (req, res) => {
+const petAll = (req, res) => {
     res.json(demopet)
 }
 
-exports.petSingle = (req, res) => {
+const petSingle = (req, res) => {
     const {id} = req.params
     console.log(id)
     res.json(demopet[0])
 }
+
+export {petAll, petSingle}
