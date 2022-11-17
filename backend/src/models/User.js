@@ -3,13 +3,13 @@ import bcrypt from "bcrypt";
 import Joi from "joi";
 
 const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true
-    },
     fullName: {
         type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        unique: true,
         required: true
     },
     email: {
@@ -26,18 +26,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "user"
     },
-    scores: [{
-        game: {
-            type: String,
-            enum: {
-                values: ['wordle', 'hangman'],
-                message: '{VALUE} game is not a valid game'
-            }
-        },
-        score: {
-            type: Array,
-            default: []
-        }
+    pets: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Pet'
+    }],
+    record: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Request'
     }]
 });
 
@@ -55,10 +50,13 @@ userSchema.statics.comparePassword = async (password, passwordToCompare) => {
 
 export const validateUser = (user) => {
     const schema = Joi.object({
-        username: Joi.string().required(),
         fullName: Joi.string().required(),
+        address: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().required()
+        password: Joi.string().required().min(6),
+        role: Joi.string().required(),
+        pets: [Joi.ObjectId()],
+        record: [Joi.ObjectId()]
     })
     return schema.validate(user)
 }
