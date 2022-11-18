@@ -1,13 +1,9 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 import Joi from "joi";
+import bcrypt from "bcrypt";
+import { petSchema } from "./Pet.js";
 
 const userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        unique: true,
-        required: true
-    },
     fullName: {
         type: String,
         required: true
@@ -17,28 +13,30 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    telephone: {
+        type: String,
+        required: true
+    },
+    dni: {
+        type: Number,
+        required: true
+    },
+    zipCode: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true
     },
     verToken: String,
-    role: {
-        type: String,
-        default: "user"
+    isOwner: {
+        type: Boolean,
+        required: true
     },
-    scores: [{
-        game: {
-            type: String,
-            enum: {
-                values: ['wordle', 'hangman'],
-                message: '{VALUE} game is not a valid game'
-            }
-        },
-        score: {
-            type: Array,
-            default: []
-        }
-    }]
+    pets: {
+        type: [petSchema]
+    }
 });
 
 userSchema.statics.encryptPassword = async (password) => {
@@ -55,7 +53,6 @@ userSchema.statics.comparePassword = async (password, passwordToCompare) => {
 
 export const validateUser = (user) => {
     const schema = Joi.object({
-        username: Joi.string().required(),
         fullName: Joi.string().required(),
         email: Joi.string().email().required(),
         password: Joi.string().required()
