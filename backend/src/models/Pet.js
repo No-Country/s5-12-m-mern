@@ -47,4 +47,4 @@ export const validatePet = (pet) => {
     return schema.validate(pet)
 }
 
-export const PetModel = mongoose.model('pets', petSchema);
+export const PetModel = mongoose.model('Pet', petSchema);
