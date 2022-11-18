@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import Joi from "joi";
 import bcrypt from "bcrypt";
-import { petSchema } from "./Pet.js";
 
 const userSchema = new mongoose.Schema({
     fullName: {
@@ -29,13 +28,27 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    verToken: String,
     isOwner: {
         type: Boolean,
         required: true
     },
-    pets: {
-        type: [petSchema]
+    pets: [{ //solo req cuando isOwner = true
+        type: Schema.Types.ObjectId,
+        ref: 'Pet',
+        default: []
+    }],
+    requests: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Request',
+        default: []
+    }],
+    fare: { //solo req cuando isOwner = false
+        type: Number,
+        req: true
+    },
+    zone: {
+        type: String,
+        req: true
     }
 });
 
@@ -55,7 +68,12 @@ export const validateUser = (user) => {
     const schema = Joi.object({
         fullName: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().required()
+        telephone: Joi.string().required(),
+        dni: Joi.number().min(7).max(8).required(),
+        password: Joi.string().required().min(6),
+        isOwner: Joi.boolean().required(),
+        fare: Joi.number().required(),
+        zone: Joi.string().required()
     })
     return schema.validate(user)
 }
