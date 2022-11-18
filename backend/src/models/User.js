@@ -1,15 +1,10 @@
-import mongoose from "mongoose";
-import bcrypt from "bcrypt";
+import mongoose, { Schema } from "mongoose";
 import Joi from "joi";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
-        required: true
-    },
-    address: {
-        type: String,
-        unique: true,
         required: true
     },
     email: {
@@ -17,23 +12,44 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    telephone: {
+        type: String,
+        required: true
+    },
+    dni: {
+        type: Number,
+        required: true
+    },
+    zipCode: {
+        type: String,
+        required: true
+    },
     password: {
         type: String,
         required: true
     },
-    verToken: String,
-    role: {
-        type: String,
-        default: "user"
+    isOwner: {
+        type: Boolean,
+        required: true
     },
-    pets: [{
+    pets: [{ //solo req cuando isOwner = true
         type: Schema.Types.ObjectId,
-        ref: 'Pet'
+        ref: 'Pet',
+        default: []
     }],
-    record: [{
+    requests: [{
         type: Schema.Types.ObjectId,
-        ref: 'Request'
-    }]
+        ref: 'Request',
+        default: []
+    }],
+    fare: { //solo req cuando isOwner = false
+        type: Number,
+        req: true
+    },
+    zone: {
+        type: String,
+        req: true
+    }
 });
 
 userSchema.statics.encryptPassword = async (password) => {
@@ -51,12 +67,13 @@ userSchema.statics.comparePassword = async (password, passwordToCompare) => {
 export const validateUser = (user) => {
     const schema = Joi.object({
         fullName: Joi.string().required(),
-        address: Joi.string().required(),
         email: Joi.string().email().required(),
+        telephone: Joi.string().required(),
+        dni: Joi.number().min(7).max(8).required(),
         password: Joi.string().required().min(6),
-        role: Joi.string().required(),
-        pets: [Joi.ObjectId()],
-        record: [Joi.ObjectId()]
+        isOwner: Joi.boolean().required(),
+        fare: Joi.number().required(),
+        zone: Joi.string().required()
     })
     return schema.validate(user)
 }
