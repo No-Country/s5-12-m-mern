@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
     pets: [{ //solo req cuando isOwner = true
         type: Schema.Types.ObjectId,
         ref: 'Pet',
-        default: []
+        default: [],
     }],
     requests: [{
         type: Schema.Types.ObjectId,
@@ -51,6 +51,9 @@ const userSchema = new mongoose.Schema({
         req: true
     }
 });
+
+userSchema.path('pets').required(function() {return this.isOwner === true}, 'Solo dueños pueden agregar mascotas');
+userSchema.path('fare').required(function() {return this.isOwner === false}, 'Solo paseadores pueden colocar tarifa');
 
 userSchema.statics.encryptPassword = async (password) => {
     try {
