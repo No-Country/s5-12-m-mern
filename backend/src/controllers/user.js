@@ -1,30 +1,48 @@
-const demousr = [
-    {
-        id: "1234",
-        type: "Owner",
-        name: "Felipe Calderon",
-        adress: "Temuco, Chile",
-        mail: "felipe.calderon321@gmail.com",
-        pets: ["12312421", "12123242", "31231233"],
-        history: "12412312"
-    },
-    {
-        id: "1235",
-        type: "Owner",
-        name: "Luca",
-        adress: "Temuco, Argentina",
-        mail: "luca@gmail.com",
-        pets: ["123124221", "132123242", "312231233"],
-        history: "312412312"
-    }
-]
+import { UserModel } from "../models/User.js"
 
-exports.userAll = (req, res) => {
-    res.json(demousr)
+export const registerUser = async (req, res) => {
+    const { fullName, email, isOwner, telephone, dni, zipCode, password } = req.body
+
+    // zona de paseos, precio por hora y paseos realizados
+    try {
+        const userExists = await this.model.findOne({ email });
+        if (userExists) throw new Error("El email ya se encuentran registrados en la base de datos");
+
+        const newUser = new UserModel({
+            fullName,
+            email,
+            telephone,
+            dni,
+            zipCode,
+            password: await UserModel.encryptPassword(password)
+        })
+
+        const savedUser = await newUser.save()
+
+        res.status(200).send(savedUser)
+    } catch (err) {
+        res.status(500).send(err)
+    }
 }
 
-exports.userSingle = (req, res) => {
-    const {id} = req.params
-    console.log(id)
-    res.json(demousr[0])
+export const loginUser = async (req, res) => {
+
+}
+
+export const getUserbyId = async (req, res) => {
+    const user = await UserModel.findById(req.params.id)
+
+    res.status(200).send(user)
+}
+
+export const editUser = async (req, res) => {
+    const user = await UserModel.findById(req.params.id)
+
+    res.status(200).send(user)
+}
+
+export const deleteUser = async (req, res) => {
+    const user = await UserModel.findByIdAndDelete(req.params.id)
+
+    res.status(200).send(user)
 }

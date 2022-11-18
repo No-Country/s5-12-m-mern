@@ -1,8 +1,8 @@
-const express = require('express')
+import express from 'express'
+import {petAll, petSingle} from './../controllers/pets.js'
 const router = express.Router()
-const controller = require('./../controllers/pets')
 
-router.get('/', controller.petAll)
-router.get('/:id', controller.petSingle)
+router.get('/', petAll)
+router.get('/:id', petSingle)
 
-module.exports = router
+export {router}

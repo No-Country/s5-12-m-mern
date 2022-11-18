@@ -1,0 +1,38 @@
+.header-ctn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  background-color: #7f8071;
+  color: #fff;
+  padding: 0.5rem;
+}
+.ctnInfoNav {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-navigation__drawer-nav {
+  height: 100%;
+}
+
+.main-navigation__header-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-ctn {
+    flex-direction: row;
+  }
+  .main-navigation__header-nav {
+    display: block;
+    height: 4rem;
+  }
+
+  .main-navigation__menu-btn {
+    display: none;
+  }
+}
