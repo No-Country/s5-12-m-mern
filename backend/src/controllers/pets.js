@@ -1,3 +1,5 @@
+import {hashFunction, comparePassword} from "./../middlewares/hashFunction.js"
+
 const demopet = [
     {
         id: "4321",
@@ -21,9 +23,10 @@ const petAll = (req, res) => {
     res.json(demopet)
 }
 
-const petSingle = (req, res) => {
+const petSingle = async (req, res) => {
     const {id} = req.params
-    console.log(id)
+    let comparacion = await comparePassword(id, "$2b$10$cOuInuSSyeVX2rWKkMGbHOnDI.L.3fXFhncx9WwZ7BoTM22heJGCi")
+    console.log(comparacion)
     res.json(demopet[0])
 }
 
