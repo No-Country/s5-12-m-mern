@@ -5,11 +5,9 @@ import dotenv from 'dotenv/config'
 import express from 'express'
 import morgan from 'morgan'
 import cors from "cors";
-import mongoose from 'mongoose';
 import {connectMongoDb} from './src/config/db.js'
 
 //Import de rutas
-import { hasToken } from './src/middlewares/authToken.js';
 import { router as petRouter } from "./src/routes/pets.js"
 //import userRouter from './src/routes/user.routes.js';
 

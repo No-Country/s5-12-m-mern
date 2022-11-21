@@ -1,4 +1,5 @@
 import {hashFunction, comparePassword} from "./../middlewares/hashFunction.js"
+import { PetModel } from "../models/Pet.js"
 
 const demopet = [
     {
@@ -19,8 +20,13 @@ const demopet = [
     }
 ]
 
-const petAll = (req, res) => {
-    res.json(demopet)
+const petAll = async (req, res) => {
+    const pets = await PetModel.findById('637be21e7707f34f0987de9d')
+    try {
+        res.json(pets)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const petSingle = async (req, res) => {
