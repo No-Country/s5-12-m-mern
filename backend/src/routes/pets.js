@@ -1,8 +1,10 @@
-import express from 'express'
-import {petAll, petSingle} from './../controllers/pets.js'
-const router = express.Router()
 
-router.get('/', petAll)
-router.get('/:id', petSingle)
+import express from "express"
+import { getPets, createPet } from "../controllers/pets.js"
 
-export {router}
+const petRoutes = express.Router()
+
+petRoutes.get('/pets', getPets)
+petRoutes.post('/pets', createPet)
+
+export default petRoutes
