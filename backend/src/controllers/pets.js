@@ -1,30 +1,29 @@
-const demopet = [
-    {
-        id: "4321",
-        name: "Otis",
-        ownerId: "1234",
-        weight: 8.5,
-        specie: "labrador",
-        notes: "no le gusta correr"
-    },
-    {
-        id: "4322",
-        name: "Cachupín",
-        ownerId: "1234",
-        weight: 3.0,
-        specie: "chihuahua",
-        notes: "alérgico a los bebés"
-    }
-]
+import { PetModel } from "../models/Pet.js";
 
-const petAll = (req, res) => {
-    res.json(demopet)
-}
+export const getPets = async (req, res, next) => {
+  try {
+    const totalPets = await PetModel.find();
+    res.status(200).json({ message: "Fetched pets successfully", totalPets });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-const petSingle = (req, res) => {
-    const {id} = req.params
-    console.log(id)
-    res.json(demopet[0])
-}
-
-export {petAll, petSingle}
+export const createPet = async (req, res, next) => {
+  const specie = req.body.specie;
+  const name = req.body.name;
+  const age = req.body.age;
+  const vaxDate = req.body.vaxDate;
+  const description = req.body.description;
+  const size = req.body.size;
+  const pet = new PetModel({
+    specie, name, age, vaxDate, description, size
+  })
+  try {
+    await pet.save()
+    res.status(201).json({message: "Mascota creada!", pet})
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({error})
+  }
+};
