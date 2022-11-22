@@ -16,10 +16,10 @@ import { loginUser, editUser, getUserbyId, createUser, deleteUser } from '../con
 import validateUserInfo from '../middlewares/validateUserInfo.js'
 const userRouter = Router()
 
-userRouter.post('/signin', validateUserInfo, createUser)
+userRouter.post('/signup', validateUserInfo, createUser)
 userRouter.post('/login', loginUser)
 userRouter.get('/:id', getUserbyId)
-userRouter.patch('/:id', validateUserInfo, editUser)
+userRouter.patch('/:id', /*validateUserInfo*/ editUser)
 userRouter.delete('/:id', deleteUser)
 >>>>>>> 05063840fa94fbad54bfb2632975069e798ede9b
 

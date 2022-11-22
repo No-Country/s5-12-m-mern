@@ -57,7 +57,7 @@ export const updatePet = async (req, res, next) => {
       return res.status(404).json({ message: "Mascota no encontrada" });
     }
     // if (pet.creator._id.toString() !== req.userId) { para cuando haya usuario
-    //   return res.status(404).json({ message: "No autorizxado" });
+    //   return res.status(404).json({ message: "No autorizado" });
     // }
     pet.specie = specie;
     pet.name = name;
