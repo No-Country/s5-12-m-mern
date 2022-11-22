@@ -7,6 +7,7 @@ import morgan from 'morgan'
 import mongoose from 'mongoose';
 import cors from "cors";
 // import './src/config/db.js'
+import connectMongoDb from './src/config/db.js';
 
 //Import de rutas
 // import { hasToken } from './src/middlewares/authToken.js';
@@ -40,4 +41,9 @@ mongoose.connect(`${process.env.DB_URI}`)
 .catch(err => {
     console.log(err);
 })
+
 // app.listen(port, () => console.log(`App working on port ${port}!`))
+// app.use((req, res, next) => {
+//     connectMongoDb()
+//     // next()
+// })
