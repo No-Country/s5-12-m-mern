@@ -35,7 +35,7 @@ app.get('*', (req, res) => res.status(404).json({ error: "Not found" })) //msg d
 
 mongoose.connect(`${process.env.DB_URI}`)
 .then(result => {
-    console.log(port);
+    console.log("soy el provisorio",port);
     app.listen(port)
 })
 .catch(err => {

@@ -32,28 +32,25 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    pets: [{ //solo req cuando isOwner = true
+    pets: [{
         type: Schema.Types.ObjectId,
-        ref: 'Pet',
-        default: [],
+        ref: 'Pet'
     }],
     requests: [{
         type: Schema.Types.ObjectId,
-        ref: 'Request',
-        default: []
+        ref: 'Request'
     }],
-    fare: { //solo req cuando isOwner = false
+    fare: {
         type: Number,
-        req: true
+        req: [function () {
+            return !this.isOwner
+        }, 'Solo paseadores pueden colocar tarifa']
     },
     zone: {
         type: String,
         req: true
     }
 });
-
-userSchema.path('pets').required(function() {return this.isOwner === true}, 'Solo dueños pueden agregar mascotas');
-userSchema.path('fare').required(function() {return this.isOwner === false}, 'Solo paseadores pueden colocar tarifa');
 
 userSchema.statics.encryptPassword = async (password) => {
     try {
@@ -63,8 +60,8 @@ userSchema.statics.encryptPassword = async (password) => {
     }
 };
 
-userSchema.statics.comparePassword = async (password, passwordToCompare) => {
-    return await bcrypt.compare(password, passwordToCompare);
+userSchema.statics.comparePassword = async (password, userPassword) => {
+    return await bcrypt.compare(password, userPassword);
 };
 
 export const validateUser = (user) => {
@@ -72,11 +69,12 @@ export const validateUser = (user) => {
         fullName: Joi.string().required(),
         email: Joi.string().email().required(),
         telephone: Joi.string().required(),
-        dni: Joi.number().min(7).max(8).required(),
+        dni: Joi.string().min(7).max(8).required(),
         password: Joi.string().required().min(6),
         isOwner: Joi.boolean().required(),
-        fare: Joi.number().required(),
-        zone: Joi.string().required()
+        fare: Joi.when('isOwner', { is: false, then: Joi.number().required() }),
+        zone: Joi.string().required(),
+        zipCode: Joi.string().required()
     })
     return schema.validate(user)
 }

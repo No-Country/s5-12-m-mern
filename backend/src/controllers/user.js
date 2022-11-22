@@ -1,15 +1,27 @@
 import { UserModel } from "../models/User.js"
 
-export const createUser = async (req, res) => {
-    try {
-        const userExists = await UserModel.findOne({ email: req.body.email })
-        if (userExists) throw new Error("El email ya se encuentran registrados en la base de datos")
+export const registerUser = async (req, res) => {
+    const { fullName, email, isOwner, telephone, dni, zipCode, password } = req.body
 
-        const newUser = new UserModel(req.body)
+    try {
+        const userExists = await UserModel.findOne({ email });
+        if (userExists) throw new Error("El email ya se encuentran registrados en la base de datos");
+
+        const newUser = new UserModel({
+            fullName,
+            email,
+            isOwner,
+            telephone,
+            dni,
+            zipCode,
+            password: await UserModel.encryptPassword(password)
+        })
+
         const savedUser = await newUser.save()
         res.status(200).send(savedUser)
 
     } catch (err) {
+        console.log(err)
         res.status(500).send(err)
     }
 }
@@ -23,10 +35,13 @@ export const loginUser = async (req, res) => {
         const passwordMatch = await UserModel.comparePassword(password, user.password);
         if (!passwordMatch) throw new Error("El usuario o contraseña son incorrectos")
 
-        return res.status(200).send(user);
+        return res.status(200).send({
+            username: user.username
+        })
     } catch (err) {
-        res.status(500).send(err);
+        res.status(500).json(err);
     }
+
 }
 
 export const getUserbyId = async (req, res) => {
