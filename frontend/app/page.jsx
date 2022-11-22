@@ -13,6 +13,8 @@ export default function Home() {
       <SliderHome/>
       <Testimonios/>
       <Footer />
+      {/* momentaneo */}
+      
     </>
   );
 }
