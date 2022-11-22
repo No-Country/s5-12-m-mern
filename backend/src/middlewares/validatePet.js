@@ -1,8 +1,8 @@
-import { validateUser } from "../models/User.js"
+import { validatePet } from "../models/Pet";
 
 export default (req, res, next) => {
 
-    const { error } = validateUser(req.body)
+    const { error } = validatePet(req.body)
 
     if (error) return res.status(400).send(error.message)
 

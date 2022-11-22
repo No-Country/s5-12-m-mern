@@ -18,8 +18,8 @@ export const registerUser = async (req, res) => {
         })
 
         const savedUser = await newUser.save()
-
         res.status(200).send(savedUser)
+
     } catch (err) {
         console.log(err)
         res.status(500).send(err)
@@ -27,14 +27,12 @@ export const registerUser = async (req, res) => {
 }
 
 export const loginUser = async (req, res) => {
-
     try {
         const { email, password } = req.body;
 
-        const user = await userClass.findByEmail(email);
+        const user = await UserModel.findOne({ email })
         if (!user) throw new Error("El usuario o contraseña son incorrectos")
-
-        const passwordMatch = await UserModel.comparePassword(password, user.password)
+        const passwordMatch = await UserModel.comparePassword(password, user.password);
         if (!passwordMatch) throw new Error("El usuario o contraseña son incorrectos")
 
         return res.status(200).send({
@@ -47,19 +45,35 @@ export const loginUser = async (req, res) => {
 }
 
 export const getUserbyId = async (req, res) => {
-    const user = await UserModel.findById(req.params.id)
+    try {
+        const user = await UserModel.findById(req.params.id)
+        res.status(200).send(user)
 
-    res.status(200).send(user)
+    } catch (err) {
+        res.status(500).send(err);
+    }
 }
 
 export const editUser = async (req, res) => {
-    const user = await UserModel.findById(req.params.id)
+    try {
+        const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        res.status(200).send(user)
 
-    res.status(200).send(user)
+    } catch (err) {
+        res.status(500).send(err);
+    }
 }
 
 export const deleteUser = async (req, res) => {
-    const user = await UserModel.findByIdAndDelete(req.params.id)
+    try {
+        const user = await UserModel.findById(req.params.id)
+        const passwordMatch = await UserModel.comparePassword(req.body.password, user.password);
+        if (!passwordMatch) throw new Error("La contraseña es incorrecta")
 
-    res.status(200).send(user)
+        await UserModel.findByIdAndRemove(req.params.id)
+        res.status(200).send(user)
+
+    } catch (err) {
+        res.status(500).send(err);
+    }
 }

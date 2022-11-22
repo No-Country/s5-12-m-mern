@@ -42,9 +42,9 @@ const userSchema = new mongoose.Schema({
     }],
     fare: {
         type: Number,
-        req: function () {
+        req: [function () {
             return !this.isOwner
-        }
+        }, 'Solo paseadores pueden colocar tarifa']
     },
     zone: {
         type: String,
@@ -79,4 +79,4 @@ export const validateUser = (user) => {
     return schema.validate(user)
 }
 
-export const UserModel = mongoose.model('users', userSchema);
+export const UserModel = mongoose.model('User', userSchema);
