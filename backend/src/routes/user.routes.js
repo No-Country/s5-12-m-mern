@@ -1,13 +1,12 @@
+import express from 'express'
+import { registerUser, getUserbyId, loginUser } from '../controllers/user.js'
 import validateUserSignup from '../middlewares/validateUserSignup.js'
-
-const express = require('express')
-const { createUser, getUser, loginUser } = require('../controllers/user.js')
 const userRouter = express.Router()
 
 
-userRouter.post('/signin', validateUserSignup, createUser)
+userRouter.post('/signin', validateUserSignup, registerUser)
 userRouter.post('/login', loginUser)
-userRouter.get('/:id', getUser)
+userRouter.get('/:id', getUserbyId)
 userRouter.patch('/:id',)
 userRouter.delete('/:id',)
 

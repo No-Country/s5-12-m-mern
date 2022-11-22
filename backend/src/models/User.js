@@ -32,17 +32,13 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    pets: {
+    pets: [{
         type: Schema.Types.ObjectId,
-        ref: 'Pet',
-        default: function () {
-            return this.isOwner ? [] : null
-        }
-    },
+        ref: 'Pet'
+    }],
     requests: [{
         type: Schema.Types.ObjectId,
-        ref: 'Request',
-        default: []
+        ref: 'Request'
     }],
     fare: {
         type: Number,
@@ -64,8 +60,8 @@ userSchema.statics.encryptPassword = async (password) => {
     }
 };
 
-userSchema.statics.comparePassword = async (password, passwordToCompare) => {
-    return await bcrypt.compare(password, passwordToCompare);
+userSchema.statics.comparePassword = async (password, userPassword) => {
+    return await bcrypt.compare(password, userPassword);
 };
 
 export const validateUser = (user) => {
@@ -76,7 +72,7 @@ export const validateUser = (user) => {
         dni: Joi.string().min(7).max(8).required(),
         password: Joi.string().required().min(6),
         isOwner: Joi.boolean().required(),
-        fare: Joi.number().required(),
+        fare: Joi.when('isOwner', { is: false, then: Joi.number().required() }),
         zone: Joi.string().required(),
         zipCode: Joi.string().required()
     })

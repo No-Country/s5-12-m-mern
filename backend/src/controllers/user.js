@@ -4,7 +4,7 @@ export const registerUser = async (req, res) => {
     const { fullName, email, isOwner, telephone, dni, zipCode, password } = req.body
 
     try {
-        const userExists = await this.model.findOne({ email });
+        const userExists = await UserModel.findOne({ email });
         if (userExists) throw new Error("El email ya se encuentran registrados en la base de datos");
 
         const newUser = new UserModel({
@@ -21,6 +21,7 @@ export const registerUser = async (req, res) => {
 
         res.status(200).send(savedUser)
     } catch (err) {
+        console.log(err)
         res.status(500).send(err)
     }
 }
