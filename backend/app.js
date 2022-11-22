@@ -30,6 +30,7 @@ app.use('/api/user', userRouter)
 
 app.get('*', (req, res) => res.status(404).json({ error: "Not found" }))
 
+
 connectMongoDb()
 .then(() => {
     app.listen(port, () => console.log(`App working on port ${port}!`))
@@ -37,3 +38,4 @@ connectMongoDb()
 .catch(err => {
     console.log(err);
 })
+
