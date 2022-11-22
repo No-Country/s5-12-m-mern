@@ -32,19 +32,23 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    pets: [{ //solo req cuando isOwner = true
+    pets: {
         type: Schema.Types.ObjectId,
         ref: 'Pet',
-        default: []
-    }],
+        default: function () {
+            return this.isOwner ? [] : null
+        }
+    },
     requests: [{
         type: Schema.Types.ObjectId,
         ref: 'Request',
         default: []
     }],
-    fare: { //solo req cuando isOwner = false
+    fare: {
         type: Number,
-        req: true
+        req: function () {
+            return !this.isOwner
+        }
     },
     zone: {
         type: String,
@@ -69,11 +73,12 @@ export const validateUser = (user) => {
         fullName: Joi.string().required(),
         email: Joi.string().email().required(),
         telephone: Joi.string().required(),
-        dni: Joi.number().min(7).max(8).required(),
+        dni: Joi.string().min(7).max(8).required(),
         password: Joi.string().required().min(6),
         isOwner: Joi.boolean().required(),
         fare: Joi.number().required(),
-        zone: Joi.string().required()
+        zone: Joi.string().required(),
+        zipCode: Joi.string().required()
     })
     return schema.validate(user)
 }

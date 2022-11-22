@@ -5,7 +5,7 @@ import dotenv from 'dotenv/config'
 import express from 'express'
 import morgan from 'morgan'
 import cors from "cors";
-// import './src/config/db.js'
+import './src/config/db.js'
 
 //Import de rutas
 import { hasToken } from './src/middlewares/authToken.js';
