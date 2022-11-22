@@ -1,48 +1,64 @@
 import { UserModel } from "../models/User.js"
 
-export const registerUser = async (req, res) => {
-    const { fullName, email, isOwner, telephone, dni, zipCode, password } = req.body
-
-    // zona de paseos, precio por hora y paseos realizados
+export const createUser = async (req, res) => {
     try {
-        const userExists = await this.model.findOne({ email });
-        if (userExists) throw new Error("El email ya se encuentran registrados en la base de datos");
+        const userExists = await UserModel.findOne({ email: req.body.email })
+        if (userExists) throw new Error("El email ya se encuentran registrados en la base de datos")
 
-        const newUser = new UserModel({
-            fullName,
-            email,
-            telephone,
-            dni,
-            zipCode,
-            password: await UserModel.encryptPassword(password)
-        })
-
+        const newUser = new UserModel(req.body)
         const savedUser = await newUser.save()
-
         res.status(200).send(savedUser)
+
     } catch (err) {
         res.status(500).send(err)
     }
 }
 
 export const loginUser = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
+        const user = await UserModel.findOne({ email })
+        if (!user) throw new Error("El usuario o contraseña son incorrectos")
+        const passwordMatch = await UserModel.comparePassword(password, user.password);
+        if (!passwordMatch) throw new Error("El usuario o contraseña son incorrectos")
+
+        return res.status(200).send(user);
+    } catch (err) {
+        res.status(500).send(err);
+    }
 }
 
 export const getUserbyId = async (req, res) => {
-    const user = await UserModel.findById(req.params.id)
+    try {
+        const user = await UserModel.findById(req.params.id)
+        res.status(200).send(user)
 
-    res.status(200).send(user)
+    } catch (err) {
+        res.status(500).send(err);
+    }
 }
 
 export const editUser = async (req, res) => {
-    const user = await UserModel.findById(req.params.id)
+    try {
+        const user = await UserModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        res.status(200).send(user)
 
-    res.status(200).send(user)
+    } catch (err) {
+        res.status(500).send(err);
+    }
 }
 
 export const deleteUser = async (req, res) => {
-    const user = await UserModel.findByIdAndDelete(req.params.id)
+    try {
+        const user = await UserModel.findById(req.params.id)
+        const passwordMatch = await UserModel.comparePassword(req.body.password, user.password);
+        if (!passwordMatch) throw new Error("La contraseña es incorrecta")
 
-    res.status(200).send(user)
+        await UserModel.findByIdAndRemove(req.params.id)
+        res.status(200).send(user)
+
+    } catch (err) {
+        res.status(500).send(err);
+    }
 }
