@@ -9,7 +9,7 @@ import {connectMongoDb} from './src/config/db.js'
 
 //Import de rutas
 import { router as petRouter } from "./src/routes/pets.js"
-//import userRouter from './src/routes/user.routes.js';
+//import userRouter from './src/routes/user.routes.js'; 
 
 const app = express()
 const port = process.env.PORT || 3000

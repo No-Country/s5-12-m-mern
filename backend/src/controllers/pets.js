@@ -1,5 +1,6 @@
 import {hashFunction, comparePassword} from "./../middlewares/hashFunction.js"
 import { PetModel } from "../models/Pet.js"
+import jwtDecode from "jwt-decode"
 
 const demopet = [
     {
@@ -21,7 +22,7 @@ const demopet = [
 ]
 
 const petAll = async (req, res) => {
-    const pets = await PetModel.findById('637be21e7707f34f0987de9d')
+    const pets = await PetModel.find()
     try {
         res.json(pets)
     } catch (error) {
@@ -30,10 +31,15 @@ const petAll = async (req, res) => {
 }
 
 const petSingle = async (req, res) => {
-    const {id} = req.params
-    let comparacion = await comparePassword(id, "$2b$10$cOuInuSSyeVX2rWKkMGbHOnDI.L.3fXFhncx9WwZ7BoTM22heJGCi")
-    console.log(comparacion)
-    res.json(demopet[0])
+    try {
+        const {token} = req.headers
+        const decodedToken = await jwtDecode(token)
+        const {id} = req.params
+        let comparacion = await comparePassword(id, "$2b$10$cOuInuSSyeVX2rWKkMGbHOnDI.L.3fXFhncx9WwZ7BoTM22heJGCi")
+        res.json({token})
+    } catch (error) {
+        res.json(error)
+    }
 }
 
 export {petAll, petSingle}
