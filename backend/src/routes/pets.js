@@ -4,10 +4,10 @@ import { getPets, getPetById,createPet, updatePet, deletePet } from "../controll
 
 const petRoutes = express.Router()
 
-petRoutes.get('/pets', getPets)
-petRoutes.get('/pets/:petId', getPetById)
-petRoutes.post('/pets', createPet)
-petRoutes.put('/pets/:petId', updatePet);
-petRoutes.delete('/pets/:petId', deletePet);
+petRoutes.get('/', getPets)
+petRoutes.get('/:petId', getPetById)
+petRoutes.post('/', createPet)
+petRoutes.put('/:petId', updatePet);
+petRoutes.delete('/:petId', deletePet);
 
 export default petRoutes
