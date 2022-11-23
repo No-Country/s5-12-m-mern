@@ -41,7 +41,20 @@
     align-items: center;
 }
 
+.secondSection{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    width: 90%;
+    margin-left: 5%;
+    align-items: center;
+}
+
 .image{
     width: 45%;
     padding: 2%;
+}
+
+.catImage{
+    width: auto;
 }
