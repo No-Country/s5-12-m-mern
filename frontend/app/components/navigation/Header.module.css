@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
   justify-content: space-between;
   background-color: #7C7150;
   color: #fff;
@@ -15,20 +14,20 @@
   align-items: center;
 }
 
+.ctnInfoNav img {
+  height: auto;
+}
+
 .main-navigation__drawer-nav {
   height: 100%;
 }
 
-.main-navigation__header-nav {
-  display: none;
-}
 
 @media (min-width: 768px) {
   .header-ctn {
     flex-direction: row;
   }
   .main-navigation__header-nav {
-    display: block;
     height: 4rem;
   }
 
