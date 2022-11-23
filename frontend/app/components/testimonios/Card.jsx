@@ -11,9 +11,9 @@ const {ratingStars , card} = styles
 export default function Card() {
   return (
     <div className={card}>
-      <Image src={avatar}/>
+      <Image src={avatar} alt="testimonios"/>
       <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
-      <Image src={rating} className={ratingStars}/>
+      <Image src={rating} className={ratingStars} alt="testimonios"/>
     </div>
   );
 }
