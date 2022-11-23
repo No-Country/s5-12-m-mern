@@ -4,7 +4,6 @@ import Joi from "joi";
 const petSchema = new mongoose.Schema({
     specie: {
         type: String,
-        unique: true,
         required: true
     },
     name: {
@@ -26,11 +25,11 @@ const petSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    owner: { 
-        type: Schema.Types.ObjectId,
-        require: true,
-        ref: 'User',
-    },
+    // owner: { 
+    //     type: Schema.Types.ObjectId,
+    //     require: true,
+    //     ref: 'User',
+    // },
 
 });
 
@@ -42,9 +41,9 @@ export const validatePet = (pet) => {
         vaxDate: Joi.string(),
         description: Joi.string().required().min(6),
         size: Joi.string().required(),
-        owner: Joi.ObjectId()
+        // owner: Joi.ObjectId()
     })
     return schema.validate(pet)
 }
-const PetModel = mongoose.model('Pet', petSchema);
-export {PetModel}
+
+export const PetModel = mongoose.model('Pet', petSchema);
