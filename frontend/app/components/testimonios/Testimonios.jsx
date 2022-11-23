@@ -5,15 +5,16 @@ import Card from "./Card";
 
 const {
     cardsContainer, 
-    title
+    title,
+    testimoniosCtn
 } = styles
 
 const Testimonios = () => {
 
   
   return (
-    <div>
-      <h2 className={title}>Testimonios:</h2>
+    <div className={testimoniosCtn}>
+      <h2 className={title}>NUESTROS CLIENTES NOS RECOMIENDAN</h2>
 
       <div className={cardsContainer}>
         <Card/>
