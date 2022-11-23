@@ -1,26 +1,30 @@
-"use client";
-import React from "react";
+import * as React from "react";
+import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
-import { useState } from "react";
+import PetsIcon from '@mui/icons-material/Pets';
 
-import FavoriteIcon from "@mui/icons-material/Star";
-import FavoriteBorderIcon from "@mui/icons-material/StarBorder";
+
+
+
 
 const StyledRating = styled(Rating)({
   "& .MuiRating-iconFilled": {
     color: "black",
   },
+  "& .MuiRating-iconHover": {
+    color: "black",
+  },
 });
 
 export default function RatingStart() {
-  const [value, setValue] = useState(4);
   return (
     <StyledRating
       readOnly
+      name="customized-color"
       defaultValue={2}
-      icon={<FavoriteIcon fontSize="inherit" />}
-      emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-      max={5}
+      precision={0.5}
+      icon={<PetsIcon fontSize="inherit" />}
+      emptyIcon={<PetsIcon fontSize="inherit" Outlined/>}
     />
   );
 }
