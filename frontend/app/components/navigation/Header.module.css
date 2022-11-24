@@ -22,12 +22,17 @@
   height: 100%;
 }
 
+.main-navigation__header-nav {
+  display: none;
+}
+
 
 @media (min-width: 768px) {
   .header-ctn {
     flex-direction: row;
   }
   .main-navigation__header-nav {
+    display: block;
     height: 4rem;
   }
 
