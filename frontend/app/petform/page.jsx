@@ -1,7 +1,8 @@
+"use client"
 import React, { useState } from 'react';
 import { FaDog, FaCat, FaFish, FaPlus } from 'react-icons/fa';
 import { GiPlasticDuck, GiTortoise } from 'react-icons/gi';
-import styles from '../app/styles/forms.module.css';
+import styles from '../styles/forms.module.css';
 
 const PetForm = () => {
 
