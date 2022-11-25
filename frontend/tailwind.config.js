@@ -6,6 +6,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'principal': '#d5cfbe',
+      'secundario': '#938f84',
+    },
     extend: {},
   },
   plugins: [],
