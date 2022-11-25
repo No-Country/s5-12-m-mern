@@ -4,7 +4,6 @@ import Header from "./components/navigation/Header";
 import styles from "./page.module.css";
 import Testimonios from "./components/testimonios/Testimonios";
 import { SliderHome } from "./components/slider";
-import GetAll from './components/getAll'
 
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
     <>
       <Header />
       <SliderHome/>
-      <GetAll/>
       <Testimonios/>
       <Footer />
     </>

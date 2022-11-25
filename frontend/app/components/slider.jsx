@@ -1,6 +1,8 @@
 "use client"
 import Image from "next/image"
 import { useState } from "react"
+import GetAll from './getAll'
+
 export const SliderHome = () => {
     const images = ["slider1.jpg", "slider2.jpg", "slider3.jpg"]
     const [indexSlider, setIndexSlider] = useState(0)
@@ -28,6 +30,7 @@ export const SliderHome = () => {
     return (
     <>
     <div className="relative mt-3">
+        <GetAll/>
         <div className="relative h-56 overflow-hidden rounded-lg md:h-[500px]">
             <div className="duration-700 ease-in-out">
                 <Image src={"/slider/"+imgToShow} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="demo slider de Felipe" width={1000} height={600}/>
