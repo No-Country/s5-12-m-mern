@@ -16,3 +16,5 @@ module.exports = {
   },
   plugins: [],
 }
+
+//se puede llamar al atributo css "principal" con un className="bg-principal" <- Así funciona tailwindcss
