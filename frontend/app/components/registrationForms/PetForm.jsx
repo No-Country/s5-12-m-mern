@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useState } from 'react';
 import { FaDog, FaCat, FaFish, FaPlus } from 'react-icons/fa';
 import { GiPlasticDuck, GiTortoise } from 'react-icons/gi';
-import styles from '../app/styles/forms.module.css';
+import styles from './Forms.module.css';
 
 const PetForm = () => {
 
@@ -42,13 +44,10 @@ const PetForm = () => {
     }
     return (
         <div>
-            <h1>Registra a tu mascota</h1>
             
             <form className={styles.form} onSubmit={handleSubmitPetForm}>
                 
                 <label>Tipo de mascota:</label><br/>
-
-                <p>Seleccionado: {kindOfPetSelected}</p>
 
                 <div className={styles.kindOfPetDiv}>
                     <input type='radio' name='kindOfPetInput' id='dog' value='Perro' required='required'
@@ -95,24 +94,24 @@ const PetForm = () => {
                 <input type='number' name='ageInput' required='required'/><br/>
                 
                 <label>Tamaño:</label><br/>
-                <div>
+                <div className={styles.sizes}>
                     <input type='radio' name='sizeInput' id='small' value='Pequeño' required='required'
                         checked={sizeOfPetSelected === 'Pequeño'? true : false}
                         onChange={handleChangeSizeOfPet}
                     />
-                    <label for='small'>Pequeño</label><br/>
+                    <label for='small'> Pequeño</label><br/>
 
                     <input type='radio' name='sizeInput' id='medium' value='Mediano'
                         checked={sizeOfPetSelected === 'Mediano'? true : false}
                         onChange={handleChangeSizeOfPet}
                     />
-                    <label for='medium'>Mediano</label><br/>
+                    <label for='medium'> Mediano</label><br/>
                     
                     <input type='radio' name='sizeInput' id='large' value='Grande' 
                         checked={sizeOfPetSelected === 'Grande'? true : false} 
                         onChange={handleChangeSizeOfPet}
                     />
-                    <label for='large'>Grande</label><br/>
+                    <label for='large'> Grande</label><br/>
                 </div>
 
                 <label>Última desparacitación:</label><br/>
@@ -133,4 +132,4 @@ const PetForm = () => {
     )
 }
 
-export default PetForm
+export default PetForm;

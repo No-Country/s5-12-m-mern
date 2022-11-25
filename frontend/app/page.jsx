@@ -4,6 +4,7 @@ import Header from "./components/navigation/Header";
 import styles from "./page.module.css";
 import Testimonios from "./components/testimonios/Testimonios";
 import { SliderHome } from "./components/slider";
+import PetForm  from "./components/registrationForms/PetForm";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Header />
       <SliderHome/>
+      <PetForm/>
       <Testimonios/>
       <Footer />
     </>

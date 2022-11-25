@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');
+/* FORMULARIOS DE REGISTRO */
+
+.form{
+    background-color: rgb(182, 178, 139);
+    border-radius: 10px;
+    padding: 40px;
+    margin: 0px 10%;
+}
+.form > label{
+    font-family: 'Nunito', sans-serif;
+}
+.form > input{
+    font-family: 'Nunito', sans-serif;
+    border: 0.8px;
+    background: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.form > textarea{
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+.form > div{
+    margin-bottom: 20px;
+}
+.sizes > label{
+    font-family: 'Nunito', sans-serif;
+}
+.btnDiv{
+    text-align: center;
+    margin-bottom: 0px !important;
+    margin-top: 10px;
+}
+.btnDiv > button{
+    font-family: 'Nunito', sans-serif;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    background-color: rgb(104, 103, 89);
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* FORM DE MASCOTAS */
+
+.kindOfPetDiv{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.kindOfPetDiv > label{
+    font-family: 'Nunito', sans-serif;
+    background-color: #fff;
+    border-radius: 100px;
+    width: 35px;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.kindOfPetInput{
+    display: none;
+}
+
+
+/* SMALL */
+@media (min-width:0px) and (max-width:500.99px){
+    .form{
+        padding: 20px;
+        margin: 0px 20px;
+    }
+    .form > label{
+        font-weight: 600;
+    }
+    .form > input{
+        border-bottom: 1.5px solid black;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .sizes > label{
+        font-size: 14px;
+    }
+    .btnDiv > button{
+        padding: 8px;
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+        font-size: 15px;
+    }
+
+    /* FORM DE MASCOTAS */
+    .kindOfPetDiv > label{
+        font-size: 13px;
+    }
+}
+
+/* MEDIUM */
+@media (min-width:501px) and (max-width:900.99px){
+
+}
+
+/* LARGE */
+@media (min-width:901px) and (max-width:2500px){
+    .form{
+        padding: 50px 60px;
+        margin: 0px 25%;
+    }
+    .form > label{
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+    .form > input{
+        border-bottom: 1.5px solid black;
+        width: 100%;
+        margin-bottom: 40px;
+        font-size: 20px;
+    }
+    .form > textarea{
+        font-size: 20px;
+    }
+    .sizes{
+        padding-bottom: 30px;
+    }
+    .sizes > label{
+        font-size: 20px;
+    }
+    .btnDiv > button{
+        padding: 12px 30px;
+        box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    /* FORM DE MASCOTAS */
+    .kindOfPetDiv > label{
+        font-size: 20px;
+    }
+
+    .kindOfPetDiv{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    
+    .kindOfPetDiv > label{
+        font-family: 'Nunito', sans-serif;
+        background-color: #fff;
+        
+        padding: 4%;
+    }
+}
