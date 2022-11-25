@@ -4,13 +4,16 @@
 import dotenv from 'dotenv/config'
 import express from 'express'
 import morgan from 'morgan'
+import mongoose from 'mongoose';
 import cors from "cors";
 import {connectMongoDb} from './src/config/db.js'
+import connectMongoDb from './src/config/db.js';
 
 //Import de rutas
-import { hasToken } from './src/middlewares/authToken.js';
-import petRoutes from "./src/routes/pets.js"
-import userRouter from './src/routes/user.routes.js';
+// import { hasToken } from './src/middlewares/authToken.js';
+// import userRouter from './src/routes/user.routes.js';
+// import petRoutes from './src/routes/pets.js';
+import petRoutes from './src/routes/pets.js';
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -24,8 +27,9 @@ app.use(express.json()) //nuevo body parser incluido en ultimas versiones de exp
 app.use(express.urlencoded({ extended: false })) //necesario para metodos POST, PUT, PATCH y DELETE
 
 //rutas
-app.use('/api/pets', petRoutes)
-app.use('/api/user', userRouter)
+// app.use('/api/pets', hasToken, petsRouter)
+app.use('/api', petRoutes)
+// app.use('/api/user', userRouter)
 
 connectMongoDb()
 app.get('*', (req, res) => res.status(404).json({ error: "Not found" })) //msg de error 404 para rutas no definidas

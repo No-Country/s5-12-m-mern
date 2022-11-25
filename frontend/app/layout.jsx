@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" className={nunito.className}>
       <Head />
-      <body className='bg-slate-600'>{children}</body>
+      <body style={{backgroundColor:'#d5cfbe'}}>{children}</body>
     </html>
   )
 }
