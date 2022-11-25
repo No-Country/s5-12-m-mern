@@ -15,6 +15,8 @@ export default function Home() {
       <Principal/>
       <Testimonios/>
       <Footer />
+      {/* momentaneo */}
+      
     </>
   );
 }
