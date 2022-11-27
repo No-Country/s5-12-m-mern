@@ -7,8 +7,8 @@ const NavLinks = () => {
   return (
     <ul className={styles["nav-links"]}>
       {
-        routesNavbar.map(({url, title, tipo}) => {
-          if (tipo === 'main') {
+        routesNavbar.map(({url, title, type, content}) => {
+          if (type === 'main') {
             return (
             <li key={title}>
               <Link href={url}>
@@ -17,11 +17,11 @@ const NavLinks = () => {
             </li>
             )
           }
-          if (tipo === 'icon') {
+          if (type === 'icon') {
             return (
               <li key={title}>
-                <Link href="#">
-                  {url}
+                <Link href={url}>
+                  {content}
                 </Link>
               </li>
             )

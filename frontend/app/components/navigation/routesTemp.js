@@ -2,29 +2,34 @@ import {AiOutlineUser, AiOutlineBell} from "react-icons/ai"
 
 const routesNavbar = [
     {
-        url: "/",
-        title: "Home Page",
-        tipo: "main",
+        url: "#",
+        title: "Inicio",
+        type: "main",
+        content: null,
     },
     {
-        url: "/petform",
-        title: "Pet Form",
-        tipo: "main",
+        url: "#",
+        title: "Mascotas",
+        type: "main",
+        content: null,
     },
     {
-        url: "/signup",
-        title: "sign Up",
-        tipo: "main",
+        url: "#",
+        title: "Paseadores",
+        type: "main",
+        content: null,
     },
     {
-        url: <AiOutlineUser/>,
+        url: "#",
         title: "Perfil de usuario",
-        tipo: "icon",
+        type: "icon",
+        content: <AiOutlineUser/>,
     },
     {
-        url: <AiOutlineBell/>,
+        url: "#",
         title: "Otro Link",
-        tipo: "icon",
+        type: "icon",
+        content: <AiOutlineBell/>,       
     },
 ]
 
