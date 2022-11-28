@@ -15,7 +15,7 @@ export default function Card() {
 
       <Image src={avatar} alt="testimonios"/>
       <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
-      <Image src={rating} className={ratingStars} alt="testimonios"/>
+      <RatingStart/>
 
     </div>
   );
