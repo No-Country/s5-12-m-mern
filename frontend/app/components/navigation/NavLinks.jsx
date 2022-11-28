@@ -4,33 +4,34 @@ import {AiOutlineUser, AiOutlineBell} from "react-icons/ai"
 import {routesNavbar} from './routesTemp'
 
 const NavLinks = () => {
-  return (
-    <ul className={styles["nav-links"]}>
-      {
-        routesNavbar.map(({url, title, type, content}) => {
-          if (type === 'main') {
-            return (
-            <li key={title}>
-              <Link href={url}>
-                {title}
-              </Link>
-            </li>
-            )
-          }
-          if (type === 'icon') {
-            return (
-              <li key={title}>
+  console.log(routesNavbar);
+    return (
+      <ul className={styles["nav-links"]}>
+        {
+          routesNavbar.map(({url, title, type, content}) => {
+            if (type === 'main') {
+              return (
+                <li key={title}>
                 <Link href={url}>
-                  {content}
+                  {title}
                 </Link>
               </li>
-            )
-          }
-        })
-      }
-    </ul>
-    );
-  };
+              )
+            }
+            if (type === 'icon') {
+              return (
+                <li key={title}>
+                  <Link href={url}>
+                    {content}
+                  </Link>
+                </li>
+              )
+            }
+          })
+        }
+      </ul>
+      );
+  }
 
   {/* STATIC ROUTES
     <ul className={styles["nav-links"]}>

@@ -8,8 +8,8 @@ const routesNavbar = [
         content: null,
     },
     {
-        url: "#",
-        title: "Mascotas",
+        url: "/loading",
+        title: "Cargando",
         type: "main",
         content: null,
     },
@@ -30,7 +30,6 @@ const routesNavbar = [
         title: "Otro Link",
         type: "icon",
         content: <AiOutlineBell/>,       
-    },
-]
+    }]
 
 export {routesNavbar}
