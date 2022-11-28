@@ -9,9 +9,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" className={nunito.className}>
       <Head />
+
       <AuthContextProvider>
         <body className="bg-slate-600">{children}</body>
       </AuthContextProvider>
+
     </html>
   );
 }
