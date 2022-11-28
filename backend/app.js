@@ -5,8 +5,7 @@ import 'dotenv/config'
 import express from 'express'
 import morgan from 'morgan'
 import cors from "cors";
-import connectMongoDb from './src/config/db.js';
-
+import {connectMongoDb} from './src/config/db.js'
 
 // import { hasToken } from './src/middlewares/authToken.js';
 import userRouter from './src/routes/user.routes.js';
@@ -16,7 +15,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(cors({
-    'origin': ['*'], //cambiar * por ip donde se alojará la app front
+    'origin': '*', //cambiar * por ip donde se alojará la app front
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }));
 app.use(morgan('dev'))
@@ -28,14 +27,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/api', petRoutes)
 app.use('/api/user', userRouter)
 
-app.get('*', (req, res) => res.status(404).json({ error: "Not found" }))
-
-
 connectMongoDb()
-.then(() => {
-    app.listen(port, () => console.log(`App working on port ${port}!`))
-})
-.catch(err => {
-    console.log(err);
-})
-
+app.get('*', (req, res) => res.status(404).json({ error: "Not found" })) //msg de error 404 para rutas no definidas
+app.listen(port, () => console.log(`App working on port ${port}!`))

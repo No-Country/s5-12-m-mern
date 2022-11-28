@@ -1,8 +1,6 @@
 import { UserModel } from "../models/User.js"
 
-
 export const createUser = async (req, res) => {
-
     const { fullName, email, isOwner, telephone, dni, zipCode, password } = req.body
 
     try {
@@ -37,11 +35,12 @@ export const loginUser = async (req, res) => {
         const passwordMatch = await UserModel.comparePassword(password, user.password);
         if (!passwordMatch) throw new Error("El usuario o contraseña son incorrectos")
 
-        return res.status(200).send({
-            username: user.username
+        return res.status(200).json({
+            email: user.email,
+            fullName: user.fullName
         })
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).send(err);
     }
 
 }
