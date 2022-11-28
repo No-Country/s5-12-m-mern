@@ -1,0 +1,60 @@
+.principalSection {
+  background-color: #d5cfbe;
+  width: 100%;
+  margin-top: 2%;
+  
+}
+
+.rightContent {
+  width: 45%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 2%;
+}
+
+.rigthTitle {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.styledButton {
+  width: 416px;
+  height: 65px;
+  background: linear-gradient(180deg, #555449 50%, #293857 295.14%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  color: #ffffffff;
+  font-size: 32px;
+  font-weight: 500;
+  margin-top: 5%;  
+}
+
+.firstSection{
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.secondSection{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    width: 90%;
+    margin-left: 5%;
+    align-items: center;
+}
+
+.image{
+    width: 45%;
+    padding: 2%;
+}
+
+.catImage{
+    width: auto;
+}
