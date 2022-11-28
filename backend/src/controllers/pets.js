@@ -1,8 +1,10 @@
 import { PetModel } from "../models/Pet.js";
+import { UserModel } from "../models/User.js";
 
 export const getPets = async (req, res, next) => {
   try {
-    const totalPets = await PetModel.find();
+    const totalPets = await PetModel.find()
+    .populate('owner', 'fullName email')
     res.status(200).json({ message: "Fetched pets successfully", totalPets });
   } catch (error) {
     console.log(error);
@@ -33,9 +35,14 @@ export const createPet = async (req, res, next) => {
     vaxDate,
     description,
     size,
+    owner: "637cdafb066bbbe63e053e94"
   });
   try {
     await pet.save();
+    // const user = await UserModel.findById(req.userId)
+    const user = await UserModel.findById("637cdafb066bbbe63e053e94")
+    user.pets.push(pet)
+    await user.save()
     res.status(201).json({ message: "Mascota creada!", pet });
   } catch (error) {
     console.log(error);

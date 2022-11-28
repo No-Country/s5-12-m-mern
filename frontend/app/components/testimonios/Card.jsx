@@ -12,20 +12,11 @@ export default function Card() {
 
   return (
     <div className={card}>
-      <Image src={avatar} className={outOfCardImage} />
 
-      <h4 className={cardTitle}>Ezequiel</h4>
+      <Image src={avatar} alt="testimonios"/>
+      <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+      <Image src={rating} className={ratingStars} alt="testimonios"/>
 
-      <p className={cardContent}>
-        "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-        consectetur, adipisci velit..."
-      </p>
-
-      <RatingStart/>
-
-      
-
-      
     </div>
   );
 }
