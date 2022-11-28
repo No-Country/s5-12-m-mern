@@ -38,9 +38,11 @@ export const loginUser = async (req, res) => {
         if (!passwordMatch) throw new Error("El usuario o contraseña son incorrectos")
 
         return res.status(200).send({
-            username: user.username
+            email: user.email,
+            fullName: user.fullName
         })
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 
