@@ -1,22 +1,3 @@
-.nav-links {
-  display: none;
-}
-
-.nav-links-drawer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 0 0.5rem;
-}
-.nav-links-drawer li {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 1rem;
-}
 
 .nav-links li {
   margin: 1rem;
@@ -63,9 +44,6 @@
     align-items: center;
   }
 
-  .nav-links-drawer {
-    display: none;
-  }
 
   .nav-links a {
     text-decoration: none;
