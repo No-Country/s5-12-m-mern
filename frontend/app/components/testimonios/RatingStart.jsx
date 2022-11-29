@@ -24,7 +24,7 @@ export default function RatingStart() {
       defaultValue={2}
       precision={0.5}
       icon={<PetsIcon fontSize="inherit" />}
-      emptyIcon={<PetsIcon fontSize="inherit" Outlined/>}
+      emptyIcon={<PetsIcon fontSize="inherit" outlined/>}
     />
   );
 }
