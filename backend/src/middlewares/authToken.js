@@ -14,4 +14,8 @@ const hasToken = async (req, res, next) => {
         res.json({error: e})
     }
 }
-export {hasToken}
+
+const sendToken = async (req, res, next) => {
+    // req.token = 
+}
+export {hasToken, sendToken}
