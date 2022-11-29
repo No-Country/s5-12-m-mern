@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #7C7150;
+  background-color: #7c7150;
   color: #fff;
   padding: 0.5rem;
 }
@@ -12,6 +12,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav-links-drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 0.5rem;
+}
+.nav-links-drawer li {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .ctnInfoNav img {
@@ -25,7 +41,6 @@
 .main-navigation__header-nav {
   display: none;
 }
-
 
 @media (min-width: 768px) {
   .header-ctn {
