@@ -1,5 +1,5 @@
 import Image from "next/image"
-const Loading = () => {
+const Loader = () => {
     return (
     <>
     <div className=" h-screen pt-32 bg-secundario">
@@ -21,4 +21,4 @@ const Loading = () => {
     )
 }
 
-export {Loading}
+export {Loader}
