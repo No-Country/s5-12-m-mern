@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useContext } from "react";
 import Link from "next/link";
 import styles from "./NavLinks.module.css";
@@ -7,7 +6,6 @@ import { AiOutlineUser, AiOutlineBell } from "react-icons/ai";
 import { BsThreeDots, BsClockHistory } from "react-icons/bs";
 import { FaPaw, FaSignOutAlt, FaSignInAlt, FaUserAlt } from "react-icons/fa";
 import Backdrop from "../UI/backdrop/Backdrop";
-import AuthContext from "../../../store/auth-context";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/userSlice.js";
 

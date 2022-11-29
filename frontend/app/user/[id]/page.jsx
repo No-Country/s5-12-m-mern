@@ -4,15 +4,15 @@ import { useEffect } from "react";
 import axios from 'axios'
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, selectUserState } from "../../components/store/userSlice.js";
+import { login } from "../../components/store/userSlice.js";
 
 const UserProfile = ({ params }) => {
 
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(true)
 
-  const userState = useSelector((state) => state.users);
-  const dispatch = useDispatch();
+  const userState = useSelector((state) => state.users)
+  const dispatch = useDispatch()
 
   console.log(userState)
 

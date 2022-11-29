@@ -1,5 +1,4 @@
 'use client'
-import { AuthContextProvider } from "../store/auth-context";
 import Head from "./cabecera";
 import { Nunito } from "@next/font/google";
 import "./globals.css";
@@ -17,15 +16,13 @@ export default function RootLayout({ children, ...rest }) {
   return (
     <html lang="es" className={nunito.className}>
       <Head />
-      <AuthContextProvider>
-        <body className="bg-slate-600">
-          <Provider store={store}>
-            <Header />
-            {children}
-            <Footer />
-          </Provider>
-        </body>
-      </AuthContextProvider>
+      <body className="bg-slate-600">
+        <Provider store={store}>
+          <Header />
+          {children}
+          <Footer />
+        </Provider>
+      </body>
     </html>
   );
 }
