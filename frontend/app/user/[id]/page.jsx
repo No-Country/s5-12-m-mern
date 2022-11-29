@@ -11,7 +11,7 @@ const UserProfile = ({ params }) => {
   const [user, setUser] = useState({})
   const [loading, setLoading] = useState(true)
 
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
   console.log(userState)
@@ -19,16 +19,13 @@ const UserProfile = ({ params }) => {
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URI}/api/user/${params.id}`)
       .then(response => {
-        console.log(response.data)
         setUser(response.data)
-        // dispatch(login(response.data))
+        dispatch(login(response.data))
       })
       .catch(err => {
         console.log(err)
       })
-      .finally(() => {
-        setLoading(false)
-      })
+    setLoading(false)
 
   }, [])
 

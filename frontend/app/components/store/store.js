@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 const makeStore = () => configureStore({
     reducer: {
-        users: userSlice.reducer,
+        users: userSlice,
     },
     devTools: true,
 });
