@@ -1,4 +1,5 @@
 import { UserModel } from "../models/User.js"
+import jwt from "jsonwebtoken";
 
 export const createUser = async (req, res) => {
     const { fullName, email, isOwner, telephone, dni, zipCode, password } = req.body
@@ -29,20 +30,22 @@ export const createUser = async (req, res) => {
 export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
-
+        
+        
         const user = await UserModel.findOne({ email })
         if (!user) throw new Error("El usuario o contraseña son incorrectos")
+
         const passwordMatch = await UserModel.comparePassword(password, user.password);
         if (!passwordMatch) throw new Error("El usuario o contraseña son incorrectos")
-
-        return res.status(200).send({
+        const userData = {
             email: user.email,
             fullName: user.fullName
-        })
+        }
+        let dataToken = jwt.sign({userData}, process.env.TOKEN);
+        return res.status(200).header("token", dataToken).json({message: "Login Succesfully"})
     } catch (err) {
-        res.status(500).send(err);
+        res.status(500).json(err);
     }
-
 }
 
 export const getUserbyId = async (req, res) => {
