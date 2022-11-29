@@ -6,7 +6,15 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'principal': '#d5cfbe',
+      'secundario': '#7c7150',
+    },
     extend: {},
   },
   plugins: [],
 }
+
+//se puede llamar al atributo css "principal" con un className="bg-principal" <- Así funciona tailwindcss

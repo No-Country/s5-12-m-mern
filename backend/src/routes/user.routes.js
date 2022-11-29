@@ -1,14 +1,12 @@
-import validateUserSignup from '../middlewares/validateUserSignup.js'
+import { Router } from 'express'
+import { loginUser, editUser, getUserbyId, createUser, deleteUser } from '../controllers/user.js'
+import validateUserInfo from '../middlewares/validateUserInfo.js'
+const userRouter = Router()
 
-const express = require('express')
-const { createUser, getUser, loginUser } = require('../controllers/user.js')
-const userRouter = express.Router()
-
-
-userRouter.post('/signin', validateUserSignup, createUser)
+userRouter.post('/signin', validateUserInfo, createUser)
 userRouter.post('/login', loginUser)
-userRouter.get('/:id', getUser)
-userRouter.patch('/:id',)
-userRouter.delete('/:id',)
+userRouter.get('/:id', getUserbyId)
+userRouter.patch('/:id', validateUserInfo, editUser)
+userRouter.delete('/:id', deleteUser)
 
 export default userRouter
