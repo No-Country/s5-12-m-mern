@@ -42,7 +42,7 @@ export const loginUser = async (req, res) => {
             fullName: user.fullName
         }
         let dataToken = jwt.sign({userData}, process.env.TOKEN);
-        return res.status(200).header("token", dataToken).json({message: "Login Succesfully"})
+        return res.status(200).header("token", dataToken).json({message: "Login Succesfully", userData})
     } catch (err) {
         res.status(500).json(err);
     }
