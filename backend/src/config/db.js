@@ -10,4 +10,4 @@ const connectMongoDb = async () => {
         throw Error(err);
     }
 }
-export {connectMongoDb}
+export { connectMongoDb }

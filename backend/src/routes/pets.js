@@ -6,7 +6,7 @@ const petRoutes = express.Router()
 
 petRoutes.get('/', getPets)
 petRoutes.get('/:petId', getPetById)
-petRoutes.post('/', createPet)
+petRoutes.post('/:id', createPet)
 petRoutes.put('/:petId', updatePet);
 petRoutes.delete('/:petId', deletePet);
 

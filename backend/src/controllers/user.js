@@ -44,7 +44,6 @@ export const loginUser = async (req, res) => {
         let dataToken = jwt.sign({userData}, process.env.TOKEN);
         return res.status(200).header("token", dataToken).json({message: "Login Succesfully"})
     } catch (err) {
-        console.log(err);
         res.status(500).json(err);
     }
 }
