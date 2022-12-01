@@ -38,6 +38,7 @@ export const loginUser = async (req, res) => {
         const passwordMatch = await UserModel.comparePassword(password, user.password);
         if (!passwordMatch) throw new Error("El usuario o contraseña son incorrectos")
         const userData = {
+            id: user._id,
             email: user.email,
             fullName: user.fullName
         }
