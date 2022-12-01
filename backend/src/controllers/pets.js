@@ -22,12 +22,8 @@ export const getPetById = async (req, res, next) => {
 };
 
 export const createPet = async (req, res, next) => {
-  const specie = req.body.specie;
-  const name = req.body.name;
-  const age = req.body.age;
-  const vaxDate = req.body.vaxDate;
-  const description = req.body.description;
-  const size = req.body.size;
+  const userId = req.params.id
+  const {specie, name, age, vaxDate, description, size} =  req.body;
   const pet = new PetModel({
     specie,
     name,
@@ -35,12 +31,11 @@ export const createPet = async (req, res, next) => {
     vaxDate,
     description,
     size,
-    owner: "637cdafb066bbbe63e053e94"
+    owner: userId
   });
   try {
     await pet.save();
-    // const user = await UserModel.findById(req.userId)
-    const user = await UserModel.findById("637cdafb066bbbe63e053e94")
+    const user = await UserModel.findById(userId)
     user.pets.push(pet)
     await user.save()
     res.status(201).json({ message: "Mascota creada!", pet });

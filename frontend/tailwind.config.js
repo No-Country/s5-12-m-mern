@@ -10,7 +10,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       'principal': '#d5cfbe',
-      'secundario': '#938f84',
+      'secundario': '#7c7150',
     },
     extend: {},
   },
