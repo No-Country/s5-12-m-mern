@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 import styles from "./principal.module.css";
 import ClientWithButton from "./ClientWithButton";
