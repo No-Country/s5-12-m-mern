@@ -32,7 +32,6 @@ export default function Contratar() {
         </div>
         <div className={cardContainer}>
           <PaseadorCard />
-          <PaseadorCard />
         </div>
       </div>
     </div>
