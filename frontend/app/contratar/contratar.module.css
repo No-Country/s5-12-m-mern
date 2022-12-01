@@ -8,5 +8,16 @@
 
 .cardContainer{
     width: 80%;
-    margin-left: 10%;
+    /* margin-left: 10%; */
 }
+
+.filterButton{
+    width: 15%;    
+    margin-left: 3%;
+  }
+
+
+.filterAndCardsCtn{
+    display: flex;
+}  
+  
