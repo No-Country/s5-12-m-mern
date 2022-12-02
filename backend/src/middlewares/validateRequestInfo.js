@@ -1,8 +1,8 @@
-import { validateRequest } from "../models/Request.js"
+import { validateRequestPost, validateRequestPut } from "../models/Request.js"
 
 export default (req, res, next) => {
 
-    const { error } = validateRequest(req.body)
+    const { error } = req.method === 'post' ? validateRequestPost(req.body) : validateRequestPut(req.body)
 
     if (error) return res.status(400).send(error.message)
 

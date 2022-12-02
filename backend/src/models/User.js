@@ -68,7 +68,7 @@ userSchema.statics.comparePassword = async (password, userPassword) => {
     return await bcrypt.compare(password, userPassword);
 };
 
-export const validateUser = (user) => {
+export const validateUserPost = (user) => {
     const schema = Joi.object({
         fullName: Joi.string().required(),
         email: Joi.string().email().required(),
@@ -79,6 +79,21 @@ export const validateUser = (user) => {
         fare: Joi.when('isOwner', { is: false, then: Joi.number().required() }),
         zone: Joi.string().required(),
         zipCode: Joi.string().required()
+    })
+    return schema.validate(user)
+}
+
+export const validateUserPut = (user) => {
+    const schema = Joi.object({
+        fullName: Joi.string(),
+        email: Joi.string().email(),
+        telephone: Joi.string(),
+        dni: Joi.string().min(7).max(8),
+        password: Joi.string().min(6),
+        isOwner: Joi.boolean(),
+        fare: Joi.when('isOwner', { is: false, then: Joi.number() }),
+        zone: Joi.string(),
+        zipCode: Joi.string()
     })
     return schema.validate(user)
 }

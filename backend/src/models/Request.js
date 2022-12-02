@@ -46,15 +46,28 @@ const requestSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-export const validateRequest = (request) => {
+export const validateRequestPost = (request) => {
     const schema = Joi.object({
         ownerId: Joi.string().required(),
         petId: Joi.string().required(),
-        walkerId: Joi.string.required(),
+        walkerId: Joi.string().required(),
         zone: Joi.string().required(),
         fare: Joi.number().required(),
         requestStart: Joi.date().required(),
         requestEnd: Joi.date().required()
+    })
+    return schema.validate(request)
+}
+
+export const validateRequestPut = (request) => {
+    const schema = Joi.object({
+        ownerId: Joi.string(),
+        petId: Joi.string(),
+        walkerId: Joi.string(),
+        zone: Joi.string(),
+        fare: Joi.number(),
+        requestStart: Joi.date(),
+        requestEnd: Joi.date()
     })
     return schema.validate(request)
 }
