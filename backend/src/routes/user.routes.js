@@ -8,7 +8,7 @@ const userRouter = Router()
 userRouter.post('/signin', validateUserInfo, createUser)
 userRouter.post('/login', loginUser)
 userRouter.get('/:id', getUserbyId)
-userRouter.post('/img/:id', profileImgHandler, addImg)
+userRouter.post('/:id/img', profileImgHandler, addImg)
 userRouter.patch('/:id', validateUserInfo, editUser)
 userRouter.delete('/:id', deleteUser)
 
