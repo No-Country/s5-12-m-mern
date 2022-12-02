@@ -34,8 +34,7 @@ const requestSchema = new mongoose.Schema({
         require: true
     },
     rating: {
-        type: Number | undefined,
-        default: undefined,
+        type: Number,
         min: 1,
         max: 5
     },

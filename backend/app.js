@@ -7,6 +7,7 @@ import { connectMongoDb } from './src/config/db.js'
 // import { hasToken } from './src/middlewares/authToken.js';
 import userRouter from './src/routes/user.routes.js';
 import petRoutes from './src/routes/pets.js';
+import requestRoute from './src/routes/requests.routes.js';
 
 const app = express()
 const port = process.env.PORT || 3000
