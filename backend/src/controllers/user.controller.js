@@ -1,6 +1,8 @@
 import { User } from "../models/User.js"
 import jwt from "jsonwebtoken";
 import awsFileDelete from "../utils/awsFileHandle/awsFileDelete.js"
+import awsFilePost from "../utils/awsFileHandle/awsFilePost.js"
+import awsFileGet from "../utils/awsFileHandle/awsFileGet.js"
 
 export const createUser = async (req, res) => {
     try {
@@ -48,7 +50,7 @@ export const loginUser = async (req, res) => {
 export const getUserbyId = async (req, res) => {
     try {
         const user = await User.findById(req.params.id).lean()
-
+        user.img = await awsFileGet(user.img)
 
         res.status(200).json(user)
     } catch (err) {
