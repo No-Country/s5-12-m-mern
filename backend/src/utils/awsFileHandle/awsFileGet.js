@@ -11,4 +11,3 @@ export default async (fileKey) => {
     })
     return await getSignedUrl(awsS3, commandImg, { expiresIn: 3600 })
 }
-
