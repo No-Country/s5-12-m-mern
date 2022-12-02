@@ -10,6 +10,9 @@ const petSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    img: {
+        type: String
+    },
     age: {
         type: Number,
         required: true
@@ -25,7 +28,7 @@ const petSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    owner: { 
+    owner: {
         type: Schema.Types.ObjectId,
         require: true,
         ref: 'User',
