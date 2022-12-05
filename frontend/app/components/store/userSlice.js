@@ -11,9 +11,9 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         login(state, action) {
-            state.user = action.payload.userData
-            state.token = action.payload.token
             console.log(action.payload)
+            state.user = Object.assign({}, action.payload.user)
+            state.token = action.payload.token
         },
         logout(state) {
             state.user = {}

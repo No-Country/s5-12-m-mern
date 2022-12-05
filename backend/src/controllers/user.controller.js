@@ -27,7 +27,7 @@ export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body
 
-        const user = await User.findOne({ email }).select({ email: 1, password: 1 })
+        const user = await User.findOne({ email }).select({ fullName: 1, email: 1, password: 1 })
         if (!user) throw new Error("El usuario o contraseña son incorrectos")
 
         const passwordMatch = await User.comparePassword(password, user.password);
@@ -41,7 +41,7 @@ export const loginUser = async (req, res) => {
 
         let dataToken = jwt.sign({ userData }, process.env.TOKEN);
 
-        return res.status(200).header("token", dataToken).json({ message: "Login Succesfully", userData })
+        return res.status(200).json({ user: userData, token: dataToken })
     } catch (err) {
         res.status(500).json(err.message)
     }
