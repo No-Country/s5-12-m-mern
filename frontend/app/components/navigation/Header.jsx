@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import NavLinks from "./NavLinks";
@@ -11,11 +10,14 @@ import { BsClockHistory } from "react-icons/bs";
 import { FaPaw, FaSignOutAlt, FaSignInAlt, FaUserAlt } from "react-icons/fa";
 import styles from "./Header.module.css";
 import SideDrawer from "./SideDrawer";
-import AuthContext from "../../../store/auth-context";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const authCtx = useContext(AuthContext);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const userState = useSelector((state) => state.users)
+
+  console.log(userState)
+
   const openDrawerHandler = () => {
     setIsDrawerOpen(true);
   };
@@ -29,51 +31,38 @@ const Header = () => {
       <SideDrawer show={isDrawerOpen} onClick={closeDrawerHandler}>
         <nav className={styles["main-navigation__drawer-nav"]}>
           <ul className={styles["nav-links-drawer"]}>
-            {authCtx.isLoggedIn ? (
-              <li>
-                Mi perfil
-                <FaUserAlt />
-              </li>
-            ) : (
-              <li>
-                Mi perfil
-                <AiOutlineUser />
-              </li>
-            )}
-            {authCtx.isLoggedIn ? (
-              <li>
-                <AiOutlineBell />
-              </li>
-            ) : (
-              ""
-            )}
-            {authCtx.isLoggedIn ? (
-              <li>
-                Historial <BsClockHistory />
-              </li>
-            ) : (
-              ""
-            )}
-
-            {authCtx.isLoggedIn ? "" : <li>Quiero ser paseador cuidador</li>}
-            {authCtx.isLoggedIn ? (
-              <li>
-                Perfil mascota <FaPaw />
-              </li>
-            ) : (
-              ""
-            )}
-            {!authCtx.isLoggedIn ? (
-              <li>
-                <Link href="/login">Iniciar sesión</Link>
-                <FaSignInAlt />
-              </li>
-            ) : (
-              <li>
-                <button onClick={logoutHandler}>Cerrar sesión</button>
-                <FaSignOutAlt />
-              </li>
-            )}
+            {userState.token
+              ? <>
+                <li>
+                  Mi perfil
+                  <FaUserAlt />
+                </li>
+                <li>
+                  <AiOutlineBell />
+                </li>
+                <li>
+                  Historial <BsClockHistory />
+                </li>
+                <li>
+                  Perfil mascota <FaPaw />
+                </li>
+                <li>
+                  <button onClick={logoutHandler}>Cerrar sesión</button>
+                  <FaSignOutAlt />
+                </li>
+              </>
+              : <>
+                <li>
+                  Mi perfil
+                  <AiOutlineUser />
+                </li>
+                <li>Quiero ser paseador cuidador</li>
+                <li>
+                  <Link href="/login">Iniciar sesión</Link>
+                  <FaSignInAlt />
+                </li>
+              </>
+            }
           </ul>
         </nav>
       </SideDrawer>
