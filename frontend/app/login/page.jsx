@@ -41,7 +41,7 @@ const Login = () => {
         width="150"
         height="150"
       />
-      <h1>Walk & Care</h1>
+      <h1 className="font-josefin">Walk & Care</h1>
       <form className={styles.formContainer} onSubmit={submitHandler}>
         <input type="text" placeholder="Email" name="email" value={email} onChange={emailHandler} />
         <input type="password" placeholder="Contraseña" name="password" value={password} onChange={passwordHandler} />

@@ -1,0 +1,23 @@
+.title{
+    text-align: center;
+    color:#938f84;
+    font-weight: 700;
+    font-size:xx-large;
+    padding: 3%;
+}
+
+.cardContainer{
+    width: 80%;
+    /* margin-left: 10%; */
+}
+
+.filterButton{
+    width: 15%;    
+    margin-left: 3%;
+  }
+
+
+.filterAndCardsCtn{
+    display: flex;
+}  
+  
