@@ -23,14 +23,14 @@ const Login = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    try {
-      const { data } = await axios.post("http://localhost:8080/api/user/login", { email, password })
-      console.log("soy response", data);
-      dispatch(login(response.data))
-      router.push('/')
-    } catch (error) {
-      console.log(error);
-    }
+    axios.post(`${process.env.NEXT_PUBLIC_API_URI}/api/user/login`, { email, password })
+      .then((response) => {
+        dispatch(login(response.data))
+        router.push('/')
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   return (
@@ -41,7 +41,7 @@ const Login = () => {
         width="150"
         height="150"
       />
-      <h1>Walk & Care</h1>
+      <h1 className="font-josefin">Walk & Care</h1>
       <form className={styles.formContainer} onSubmit={submitHandler}>
         <input type="text" placeholder="Email" name="email" value={email} onChange={emailHandler} />
         <input type="password" placeholder="Contraseña" name="password" value={password} onChange={passwordHandler} />

@@ -12,7 +12,12 @@ module.exports = {
       'principal': '#d5cfbe',
       'secundario': '#7c7150',
     },
-    extend: {},
+    extend:
+    {
+      fontFamily: {
+        'josefin': ['Josefin_Slab', 'serif']
+      },
+    },
   },
   plugins: [],
 }
