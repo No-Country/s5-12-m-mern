@@ -16,7 +16,7 @@ export default function RootLayout({ children, ...rest }) {
   return (
     <html lang="es" className={nunito.className}>
       <Head />
-      <body className="bg-slate-600">
+      <body className="bg-principal">
         <Provider store={store}>
           <Header />
           {children}
