@@ -1,0 +1,114 @@
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  background-color: #d5cfbe;
+  width: 60%;
+  margin-left: 20%;
+  margin-bottom: 5%;
+  text-align: center;  
+}
+
+.userProfileContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+}
+
+.imageProfileContainer {
+  background-color: #b2b09c;
+  width: 100%;
+}
+
+.imageProfile {
+  width: 20%;
+  margin: 4% 40% 4% 40%;
+  border-radius: 50%;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.titlePage {
+  color: rgba(90, 90, 80, 1);
+  font-weight: 800;
+  font-size: 40px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  text-underline-offset: solid #000000;
+  stroke: #000000;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25);
+  fill: solid #5a5a50;
+}
+
+.userTitle {
+  font-weight: 700;
+  font-size: xx-large;
+  margin-top: 5%;
+  width: 80%;
+}
+
+.contactData {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 70%;
+  margin-left: 15%;
+  margin-bottom: 3%;
+  align-self: flex-start;
+  text-align: start;
+  font-weight: 500;
+}
+
+.description {
+  width: 70%;
+  margin: 5% 15% 4% 15%;
+  text-align: start;
+}
+
+.profileButton {
+  color: #000000;
+  background-color: #b2b09c;
+  border-radius: 12px;
+  width: 25%;
+  padding: 1%;
+  margin-bottom: 3%;
+  box-shadow: rgba(0, 0, 0, 0.25);
+}
+
+.buttonsControler {
+  display: flex;  
+  width: 30%;
+  margin-left: 5%;
+  margin-bottom: 0;
+}
+
+.misDatos {
+  background-color: #b2b09c;
+  color: #000000;
+  font-weight: 500;   
+  width: 100%;
+}
+.historial {
+  background-color: #66675b;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 1%;
+  width: 100%;
+}
+
+.historialCardContainer{
+  background-color: #B2B09C;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
