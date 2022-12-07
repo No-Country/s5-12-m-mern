@@ -10,11 +10,14 @@ import { BsClockHistory } from "react-icons/bs";
 import { FaPaw, FaSignOutAlt, FaSignInAlt, FaUserAlt } from "react-icons/fa";
 import styles from "./Header.module.css";
 import SideDrawer from "./SideDrawer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../store/userSlice.js";
 
 const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const userState = useSelector((state) => state.users)
+  const dispatch = useDispatch()
+
 
   console.log(userState)
 
@@ -25,6 +28,11 @@ const Header = () => {
   const closeDrawerHandler = () => {
     setIsDrawerOpen(false);
   };
+
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
+
   return (
     <>
       {isDrawerOpen && <Backdrop onClick={closeDrawerHandler} />}

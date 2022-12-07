@@ -23,14 +23,14 @@ const Login = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    try {
-      const { data } = await axios.post("http://localhost:8080/api/user/login", { email, password })
-      console.log("soy response", data);
-      dispatch(login(response.data))
-      router.push('/')
-    } catch (error) {
-      console.log(error);
-    }
+    axios.post(`${process.env.NEXT_PUBLIC_API_URI}/api/user/login`, { email, password })
+      .then((response) => {
+        dispatch(login(response.data))
+        router.push('/')
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   return (

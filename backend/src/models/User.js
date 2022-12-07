@@ -12,6 +12,9 @@ const userSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    img: {
+        type: String
+    },
     telephone: {
         type: String,
         required: true
@@ -65,7 +68,7 @@ userSchema.statics.comparePassword = async (password, userPassword) => {
     return await bcrypt.compare(password, userPassword);
 };
 
-export const validateUser = (user) => {
+export const validateUserPost = (user) => {
     const schema = Joi.object({
         fullName: Joi.string().required(),
         email: Joi.string().email().required(),
@@ -80,4 +83,19 @@ export const validateUser = (user) => {
     return schema.validate(user)
 }
 
-export const UserModel = mongoose.model('User', userSchema);
+export const validateUserPut = (user) => {
+    const schema = Joi.object({
+        fullName: Joi.string(),
+        email: Joi.string().email(),
+        telephone: Joi.string(),
+        dni: Joi.string().min(7).max(8),
+        password: Joi.string().min(6),
+        isOwner: Joi.boolean(),
+        fare: Joi.when('isOwner', { is: false, then: Joi.number() }),
+        zone: Joi.string(),
+        zipCode: Joi.string()
+    })
+    return schema.validate(user)
+}
+
+export const User = mongoose.model('User', userSchema);

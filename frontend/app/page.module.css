@@ -14,7 +14,7 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: #7c7150;
   padding: 20px;
   width: 100%;
 }
@@ -204,14 +204,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    
   }
   .title a {
     background: linear-gradient(180deg, #0070f3 0%, #0153af 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+
   }
   .card,
   .footer {
