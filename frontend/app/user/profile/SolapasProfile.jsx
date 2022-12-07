@@ -11,26 +11,29 @@ const {
 } = styles;
 
 
+const UserAndProfileContainer = ({ user }) => {
 
-export default function UserAndProfileContainer() {
+  const { requests, ...userInfo } = user
   const [solapa, setSolapa] = useState(true);
 
-  function goToHistorial(){
+  function goToHistorial() {
     setSolapa(false)
   }
-  function goToUserProfile(){
+  function goToUserProfile() {
     setSolapa(true)
   }
 
   return (
     <div>
       <div className={buttonsControler}>
-      
+
         <button className={misDatos} onClick={goToUserProfile}>Mis datos</button>
         <button className={historial} onClick={goToHistorial}>Historial</button>
       </div>
 
-      {solapa ? <UserProfile /> : <HistorialProfile/>}
+      {solapa ? <UserProfile user={userInfo} /> : <HistorialProfile requests={requests} />}
     </div>
   );
 }
+
+export default UserAndProfileContainer;

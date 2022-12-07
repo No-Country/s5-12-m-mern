@@ -39,7 +39,9 @@ const NavLinks = () => {
               </Link>
             </li>
             <li>
-              <FaUserAlt />
+              <Link href="/user/profile">
+                <FaUserAlt />
+              </Link>
             </li>
             <li>
               <AiOutlineBell />
