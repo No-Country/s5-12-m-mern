@@ -42,8 +42,10 @@ const Header = () => {
             {userState.token
               ? <>
                 <li>
-                  Mi perfil
-                  <FaUserAlt />
+                  <Link href="/user/profile">
+                    Mi perfil
+                    <FaUserAlt />
+                  </Link>
                 </li>
                 <li>
                   <AiOutlineBell />

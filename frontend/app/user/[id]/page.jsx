@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect } from "react";
 import axios from 'axios'
-import { useState } from "react";
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../components/store/userSlice.js";
 
@@ -21,7 +20,6 @@ const UserProfile = ({ params }) => {
       .then(response => {
         console.log(response.data)
         setUser(response.data)
-        dispatch(login(response.data))
       })
       .catch(err => {
         console.log(err)

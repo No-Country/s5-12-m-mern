@@ -34,7 +34,14 @@ const NavLinks = () => {
         {userState.token
           ? <>
             <li>
-              <FaUserAlt />
+              <Link href="/browser">
+                Buscar paseadores
+              </Link>
+            </li>
+            <li>
+              <Link href="/user/profile">
+                <FaUserAlt />
+              </Link>
             </li>
             <li>
               <AiOutlineBell />

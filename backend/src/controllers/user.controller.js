@@ -58,6 +58,24 @@ export const getUserbyId = async (req, res) => {
     }
 }
 
+export const getWalkers = async (req, res) => {
+    try {
+        const users = await User.find({ isOwner: false }).lean()
+
+        for (const user of users) {
+            const requests = user.requests
+            const reqAmount = requests.length
+            user.rating = reqAmount > 0 ? requests.reduce((acum, cur) => acum + cur, 0) / reqAmount : null
+            user.requests = reqAmount
+            user.img = user.img ? await awsFileGet(user.img) : ""
+        }
+
+        res.status(200).json(users)
+    } catch (err) {
+        res.status(500).json(err.message)
+    }
+}
+
 export const addImg = async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
