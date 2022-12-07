@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect } from "react";
 import axios from 'axios'
-import { useState } from "react";
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../components/store/userSlice.js";
 
@@ -20,7 +19,6 @@ const UserProfile = ({ params }) => {
     axios.get(`${process.env.NEXT_PUBLIC_API_URI}/api/user/${params.id}`)
       .then(response => {
         setUser(response.data)
-        dispatch(login(response.data))
       })
       .catch(err => {
         console.log(err)

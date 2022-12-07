@@ -34,6 +34,11 @@ const NavLinks = () => {
         {userState.token
           ? <>
             <li>
+              <Link href="/browser">
+                Buscar paseadores
+              </Link>
+            </li>
+            <li>
               <FaUserAlt />
             </li>
             <li>
