@@ -7,7 +7,7 @@ import PaseadorWithButton from "./PaseadorWithButton";
 const { principalSection } = styles;
 
 export default function Principal() {
-  return <div className={principalSection}>
+  return <div className="bg-principal">
     <ClientWithButton/>
     <PaseadorWithButton/>
   </div>;
