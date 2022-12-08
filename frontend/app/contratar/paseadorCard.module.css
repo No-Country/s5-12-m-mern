@@ -31,6 +31,7 @@
   height: 203px;
   border-radius: 50%;
   margin-top: 3%;
+  object-fit: cover;
 }
 
 .paseadorName {
@@ -72,4 +73,3 @@
 .data {
   padding: 2%;
 }
-

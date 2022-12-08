@@ -56,7 +56,6 @@ export default function Contratar() {
           </Accordion>
         </div>
         <div className={cardContainer}>
-          <PaseadorCard />
           {walkers.map((walker) => <PaseadorCard key={walker._id} walker={walker} />)}
         </div>
       </div>
