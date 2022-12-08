@@ -6,16 +6,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'principal': '#d5cfbe',
-      'secundario': '#7c7150',
-    },
-    extend:
-    {
-      fontFamily: {
-        'josefin': ['Josefin_Slab', 'serif']
+    extend: {
+      colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
+        'principal': '#d5cfbe',
+        'secundario': '#7c7150',
       },
     },
   },

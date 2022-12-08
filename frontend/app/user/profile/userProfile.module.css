@@ -5,15 +5,21 @@
   width: 60%;
   margin-left: 20%;
   margin-bottom: 5%;
-  text-align: center;  
+  text-align: center;
 }
 
-.userProfileContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    
+.userProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
 }
+
+.userAndPetsContainer {
+  display: flex;
+  justify-content: center;
+}
+
 
 .imageProfileContainer {
   background-color: #b2b09c;
@@ -24,6 +30,24 @@
   width: 20%;
   margin: 4% 40% 4% 40%;
   border-radius: 50%;
+  background-color: #0000004f;
+}
+
+.petsContainer {
+  margin-top: 2em;
+  margin-left: 1em;
+}
+
+.petItem {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #0000004f;
+  color: white;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .userInfo {
@@ -83,7 +107,7 @@
 }
 
 .buttonsControler {
-  display: flex;  
+  display: flex;
   width: 30%;
   margin-left: 5%;
   margin-bottom: 0;
@@ -92,9 +116,10 @@
 .misDatos {
   background-color: #b2b09c;
   color: #000000;
-  font-weight: 500;   
+  font-weight: 500;
   width: 100%;
 }
+
 .historial {
   background-color: #66675b;
   color: #ffffff;
@@ -103,12 +128,9 @@
   width: 100%;
 }
 
-.historialCardContainer{
+.historialCardContainer {
   background-color: #B2B09C;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
-
-

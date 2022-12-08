@@ -1,59 +1,31 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import styles from "./userProfile.module.css";
-/* import { Loader } from "../../components/loaders/genericloader"; */
 import Image from "next/image";
-import Avatar from "../../../public/avatar.png";
-
-
 
 const {
-    userProfile,
-    imageProfileContainer,
-    imageProfile,
-    userInfo,
-    contactData,
-    userTitle,
-    description,
-    profileButton,
-    buttonsControler,
-    historial,
-    misDatos,
-    userProfileContainer
-  } = styles;
+  userProfile,
+  imageProfileContainer,
+  imageProfile,
+  userInfo,
+  contactData,
+  userTitle,
+  description,
+  profileButton,
+  buttonsControler,
+  historial,
+  misDatos,
+  userProfileContainer
+} = styles;
 
-export default function UserProfile() {
-  const [user, setUser] = useState({});
-  const userState = useSelector((state) => state.users);
-  const [loading, setLoading] = useState(true);
+const UserProfile = ({ user }) => {
 
-
-
-
-  useEffect(() => {
-    axios
-      /* .get(`${process.env.NEXT_PUBLIC_API_URI}/api/user/${userState._id}`) */
-
-      .get(
-        `${process.env.NEXT_PUBLIC_API_URI}/api/user/637ce1ccaf88bd655fb0c9bd`
-      )
-      .then((response) => {
-        console.log(response.data);
-        setUser(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setLoading(false);
-  }, []);
+  console.log(user)
 
   return (
     <div className={userProfileContainer}>
 
       <div className={imageProfileContainer}>
-        <Image src={Avatar} className={imageProfile} />
+        <Image src={user.img} width={200} height={200} className={imageProfile} />
       </div>
       <div className={userInfo}>
         <h2 className={userTitle}>{user.fullName}</h2>
@@ -69,14 +41,16 @@ export default function UserProfile() {
           accident, sometimes on purpose (injected humour and the like).
         </p>
         <div className={contactData}>
-          <p>Zona -- ? </p>
+          <p>{user.zipCode}</p>
           <p>{user.telephone}</p>
           <p>{user.email}</p>
         </div>
 
         <button className={profileButton}>Editar perfil</button>
       </div>
-      
+
     </div>
   );
 }
+
+export default UserProfile
