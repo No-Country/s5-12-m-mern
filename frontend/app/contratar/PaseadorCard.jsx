@@ -27,8 +27,8 @@ const PaseadorCard = ({ walker }) => {
         <p>Paseador y cuidador</p>
         <RatingStart />
         <div className={data}>
-          <p>Ubicacion</p>
-          <p>{walker?.telephone}</p>
+          <p>Ubicacion: {walker?.zone}</p>
+          <p>Teléfono: {walker?.telephone}</p>
           <p>{walker?.mail}</p>
         </div>
       </div>
