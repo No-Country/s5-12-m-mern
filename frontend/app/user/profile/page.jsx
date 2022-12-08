@@ -21,7 +21,7 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get(`${process.env.NEXT_PUBLIC_API_URI}/api/user/${userState.user.id}`)
+    axios.get(`${process.env.NEXT_PUBLIC_API_URI}/api/user/byid/${userState.user.id}`)
       .then((response) => {
         setUser(response.data);
       })
