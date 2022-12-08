@@ -1,6 +1,5 @@
 "use client";
-import { Avatar } from "@mui/material";
-import Image from "next/image";
+
 import React from "react";
 import styles from "./paseadorCard.module.css";
 import AvatarImg from "../../public/eze.jpg";
@@ -24,17 +23,17 @@ const PaseadorCard = ({ walker }) => {
   return (
     <div className={paseadorCard}>
       <div className={paseadorProfile}>
-        {walker?.img ? <Image src={walker.img} className={profileImage} /> : <Image src={AvatarImg} className={profileImage} />}
+        {walker?.img ? <img src={walker.img} className={profileImage} /> : <img src={AvatarImg} className={profileImage} />}
         <p>Paseador y cuidador</p>
         <RatingStart />
         <div className={data}>
           <p>Ubicacion</p>
-          <p>{walker.telephone}</p>
-          <p>{walker.mail}</p>
+          <p>{walker?.telephone}</p>
+          <p>{walker?.mail}</p>
         </div>
       </div>
       <div className={paseadorInfo}>
-        <h3 className={paseadorName}>{walker.fullName}</h3>
+        <h3 className={paseadorName}>{walker?.fullName}</h3>
         <h5 className={presentacionPaseador}>Presentación personal:</h5>
         <p className={pPaseador}>
           There are many variations of passages of Lorem Ipsum available, but
@@ -43,7 +42,7 @@ const PaseadorCard = ({ walker }) => {
         </p>
 
         <p className={centerAndBold}>Paseos realizados:27</p>
-        <p className={centerAndBold}>Precio/Hora:${walker.fare}</p>
+        <p className={centerAndBold}>Precio/Hora:${walker?.fare}</p>
         <button className={contactarBtn}>Contactar</button>
       </div>
     </div>
